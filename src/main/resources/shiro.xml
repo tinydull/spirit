@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+	<!-- <aop:config proxy-target-class="true" /> -->
+	
+	<!-- 会话 Cookie 模板 -->
+	<!-- <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+    	<constructor-arg value="sid"/>
+    	<property name="httpOnly" value="true"/>
+    	<property name="maxAge" value="180000"/>
+	</bean> -->
+	<!-- 会话管理器 -->
+	<!-- <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+	    <property name="globalSessionTimeout" value="1800000"/>
+	    <property name="deleteInvalidSessions" value="true"/>
+	    <property name="sessionValidationSchedulerEnabled" value="true"/>
+	    <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+	    <property name="sessionDAO" ref="sessionDAO"/>
+	    <property name="sessionIdCookieEnabled" value="true"/>
+	    <property name="sessionIdCookie" ref="sessionIdCookie"/>
+	</bean> -->
+	<!-- 安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	    <property name="realm" ref="userRealm"/>
+	    <!-- <property name="sessionManager" ref="sessionManager"/> -->
+	    <property name="cacheManager" ref="cacheManager"/>
+	</bean>
+	
+	<!-- 安全管理器 -->
+	<!-- <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realms">
+			<list>
+				<ref bean="userRealm" />
+			</list>
+		</property>
+	</bean> -->
+
+	
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/manager/login" />
+		<property name="successUrl" value="/manager/main" />
+		<property name="unauthorizedUrl" value="/manager/error" />
+		<!-- <property name="filters">    
+            <map>    
+                <entry key="sperm" value-ref="myAuthorizationFilter"/>  
+            </map>    
+        </property> -->
+		<property name="filterChainDefinitions">
+			<value>
+				/static/** = anon
+				/manager/login = anon
+				/manager/checkLogin = anon
+				/manager/error = anon
+				/file/** = anon
+				/manager/** = authc
+			</value>
+		</property>
+	</bean>
+
+	<bean id="userRealm" class="com.kk.spirit.sercurity.MyAuthorizingRealm"></bean>
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+	
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" 
+		depends-on="lifecycleBeanPostProcessor" >
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+		
+	<!-- <bean id="myAuthorizationFilter" class="com.kk.spirit.sercurity.MyAuthorizationFilter"></bean> -->
+	
+	<bean id="sessionValidationScheduler" 
+		class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler"></bean>
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">  
+		<property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>  
+    	<property name="arguments" ref="securityManager"/>  
+	</bean>
+	<bean id="ehCacheManager"  class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
+    	<property name="configLocation" value="classpath:ehcache.xml" />  
+        <property name="shared" value="true"></property> <!-- 这里是关键！！！没有必错  -->  
+	</bean> 
+	<!-- 缓存管理器 使用 Ehcache 实现 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+    	<!-- <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/> -->
+    	<property name="cacheManager" ref="ehCacheManager" />  
+	</bean>
+	<!-- 无权限的时候跳转 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.UnauthorizedException">/error</prop>
+            </props>
+        </property>
+    </bean>
+      
+</beans>
+	
+	
+	
+	

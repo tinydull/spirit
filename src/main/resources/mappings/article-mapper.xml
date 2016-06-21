@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.spirit.dao.ArticleDao">
+
+    <select id="queryArticles" parameterType="string" resultType="com.kk.spirit.entity.Article">
+        SELECT 
+        	id, 
+        	title,
+        	corpus,
+        	pv,
+        	thumb,
+        	DATE_FORMAT(TIME, '%Y-%m-%d') time 
+        FROM 
+        	T_ARTICLE T 
+        	WHERE T.ISDELETE = 0
+        <if test="value != null">
+	        AND T.CORPUS = #{value} 
+        </if>
+        ORDER BY T.TIME DESC
+    </select>
+	
+	<insert id="insert" >
+		INSERT INTO T_ARTICLE(TITLE, THUMB, MD, CONTENT, CORPUS, WORDS,TIME)
+		VALUES(#{title}, 
+				#{thumb}, 
+				#{md}, 
+				#{content}, 
+				#{corpus},
+				#{words}, 
+				NOW())
+	</insert>
+	
+	<update id="update">
+		UPDATE T_ARTICLE
+			SET TITLE = #{title},
+				THUMB = #{thumb},
+				MD = #{md},
+				CONTENT = #{content},
+				CORPUS = #{corpus},
+				WORDS = #{words},
+				UPDATETIME = now()
+		WHERE ID = #{id}
+	</update>
+	
+    <select id="queryArticleById" parameterType="string" resultType="com.kk.spirit.entity.Article">
+        SELECT 
+        	id, 
+        	title, 
+        	thumb,
+        	md, 
+        	content, 
+        	corpus,
+        	DATE_FORMAT(TIME, '%Y-%m-%d') time,
+        	pv ,
+        	words
+        FROM T_ARTICLE T WHERE T.ID = #{value} 
+    </select>
+    
+    <update id="updatePV" >
+    	UPDATE T_ARTICLE SET PV = #{pv} WHERE ID = #{id}
+    </update>
+    
+    <delete id="delete">
+    	UPDATE T_ARTICLE SET ISDELETE = 1 WHERE ID = #{id}
+    </delete>
+    
+    
+    <select id="queryCommentsByArticleId" parameterType="string" 
+    		resultType="com.kk.spirit.entity.Comment">
+    	SELECT 
+    		id, 
+    		name,
+    		article_id articleId, 
+    		comment, 
+    		address,
+    		DATE_FORMAT(TIME, '%Y-%m-%d') time 
+    	FROM T_COMMENT WHERE ARTICLE_ID = #{value}
+    	ORDER BY ID DESC
+    </select>
+    
+    <insert id="insertComment">
+    	INSERT T_COMMENT(ARTICLE_ID, 
+    					COMMENT,
+    					NAME,
+    					ADDRESS, 
+    					TIME) 
+    	VALUES(#{articleId}, 
+    			#{comment}, 
+    			#{name}, 
+    			#{address},
+    			NOW())
+    </insert>
+</mapper>

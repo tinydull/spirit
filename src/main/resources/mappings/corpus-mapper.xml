@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.spirit.dao.CorpusDao">
+
+    <!--  查询所有文集  -->
+    <select id="queryCorpus" resultType="com.kk.spirit.entity.Corpus">
+        SELECT ID, NAME FROM T_CORPUS T WHERE T.ISDELETE = 0
+    </select>
+    
+    <insert id="insert" parameterType="com.kk.spirit.entity.Corpus">
+    	INSERT INTO T_CORPUS(NAME) VALUES(#{name})
+    </insert>
+		
+	<update id="update" parameterType="com.kk.spirit.entity.Corpus">
+		UPDATE T_CORPUS SET NAME = #{name} WHERE ID = #{id}
+	</update>
+
+	<delete id="delete">
+		UPDATE T_CORPUS SET ISDELETE = 1 WHERE ID = #{id}
+	</delete>
+	
+</mapper>
