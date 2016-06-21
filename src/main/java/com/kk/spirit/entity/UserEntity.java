@@ -1,7 +1,13 @@
 package com.kk.spirit.entity;
 
 import java.io.Serializable;
-
+/**
+ * 
+ * 用户
+ * 
+ * @author  huangteng
+ * @date  2016年6月21日
+ */
 public class UserEntity implements Serializable
 {
 

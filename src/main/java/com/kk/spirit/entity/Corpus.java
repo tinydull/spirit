@@ -1,5 +1,11 @@
 package com.kk.spirit.entity;
-
+/**
+ * 
+ * 文集
+ * 
+ * @author  huangteng
+ * @date  2016年6月21日
+ */
 public class Corpus {
 
 	private Integer id;

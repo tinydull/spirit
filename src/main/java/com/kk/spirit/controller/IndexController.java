@@ -12,6 +12,7 @@ import com.kk.spirit.service.ArticleService;
 
 /**
  * 首页控制器
+ * 跳转到首页页面
  * 
  */
 @Controller
@@ -23,7 +24,7 @@ public class IndexController {
 
 	/**
 	 * 首页功能 文章列表 
-	 * <功能详细描述>
+	 * 
 	 */
 	@RequestMapping("/")
 	public ModelAndView index(String offset) {

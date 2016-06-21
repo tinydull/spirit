@@ -9,7 +9,7 @@ import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.UploadManager;
 
-public class Test {
+public class TestUpload2Qiniu2 {
 	// 设置好账号的ACCESS_KEY和SECRET_KEY
 	String ACCESS_KEY = "TagrdOqL_pPwji0ltqUJdQJ0zeAC6QdEfPWC4_xX";
 	String SECRET_KEY = "oQBC6tWN92gWt4noLna71pdbh4Ek8YaaFwZk2BA9";
@@ -52,6 +52,6 @@ public class Test {
 	}
 
 	public static void main(String args[]) throws IOException {
-		new Test().upload();
+		new TestUpload2Qiniu2().upload();
 	}
 }

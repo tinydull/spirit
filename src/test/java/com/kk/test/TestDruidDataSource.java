@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
 
-public class TestJson {
+public class TestDruidDataSource {
 
 	public static void main(String[] args) {
 		final DruidDataSource dataSource = new DruidDataSource();

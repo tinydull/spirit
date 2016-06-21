@@ -6,7 +6,7 @@ import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.UploadManager;
 
-public class UploadDemo {
+public class TestUpload2Qiniu {
 	// 设置好账号的ACCESS_KEY和SECRET_KEY
 	String ACCESS_KEY = "TagrdOqL_pPwji0ltqUJdQJ0zeAC6QdEfPWC4_xX";
 	String SECRET_KEY = "oQBC6tWN92gWt4noLna71pdbh4Ek8YaaFwZk2BA9";
@@ -49,7 +49,7 @@ public class UploadDemo {
 
 	public static void main(String args[]) throws IOException {
 		java.security.Security.addProvider(new com.sun.crypto.provider.SunJCE());
-		new UploadDemo().upload();
+		new TestUpload2Qiniu().upload();
 	}
 
 }

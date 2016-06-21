@@ -1,5 +1,11 @@
 package com.kk.spirit.entity;
-
+/**
+ * 
+ * 评论
+ * 
+ * @author  huangteng
+ * @date  2016年6月21日
+ */
 public class Comment {
 
 	private Integer id;

@@ -1,23 +1,20 @@
 package com.kk.spirit.utils;
 
 import com.alibaba.fastjson.JSON;
-
-public class JSONUtil
-{
-
+/**
+ * 
+ * JSON工具类
+ * 
+ * @author  huangteng
+ * @date  2016年6月21日
+ */
+public class JSONUtil {
+	/**
+	 * 
+	 * 格式化为JSON类型的字符串
+	 */
+	public static String writeJson(Object obj) {
+		return JSON.toJSONString(obj);
+	}
 	
-    public static String writeJson (Object obj) {
-        /*ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(Include.NON_EMPTY);  
-        try
-        {
-            return mapper.writeValueAsString(obj);
-        }
-        catch (JsonProcessingException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/
-    	return JSON.toJSONString(obj);
-    }
 }

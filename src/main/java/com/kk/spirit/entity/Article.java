@@ -1,7 +1,13 @@
 package com.kk.spirit.entity;
 
 import java.util.List;
-
+/**
+ * 
+ * 文章
+ * 
+ * @author  huangteng
+ * @date  2016年6月21日
+ */
 public class Article {
 
 	private Integer id;
