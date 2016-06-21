@@ -11,8 +11,7 @@ import com.kk.spirit.entity.Comment;
 import com.kk.spirit.service.ArticleService;
 
 /**
- * 首页控制器
- * 跳转到首页页面
+ * 首页控制器 跳转到首页页面
  * 
  */
 @Controller
@@ -23,7 +22,7 @@ public class IndexController {
 	private ArticleService articleService;
 
 	/**
-	 * 首页功能 文章列表 
+	 * 首页功能 文章列表
 	 * 
 	 */
 	@RequestMapping("/")
@@ -39,19 +38,18 @@ public class IndexController {
 			}
 		}
 		mv.addObject("list", list);
-		System.err.println("webapp.root:"+System.getProperty("webapp.root"));
+		System.err.println("webapp.root:" + System.getProperty("webapp.root"));
 		return mv;
 	}
 
 	/**
-	 * 文章详情页面
-	 * <功能详细描述>
+	 * 文章详情页面 
 	 */
 	@RequestMapping("/detail")
 	public ModelAndView detail(String id) {
 		ModelAndView mv = new ModelAndView("detail");
 		Article article = articleService.queryArticleById(id);
-		
+
 		if (null != article) {
 			if (null != article.getPv()) {
 				article.setPv(article.getPv() + 1);
@@ -63,25 +61,22 @@ public class IndexController {
 		mv.addObject("article", article);
 		return mv;
 	}
-	
+
 	@RequestMapping("/addComment")
 	@ResponseBody
 	public String addComment(Comment comment) {
 		articleService.insertComment(comment);
 		return "true";
 	}
-	
-	
-	
+
 	/**
 	 * 
 	 * 关于页面
-	 * <功能详细描述>
 	 */
 	@RequestMapping("/about")
 	public ModelAndView info(String info) {
 		ModelAndView mv = new ModelAndView("about");
 		return mv;
 	}
-	
+
 }

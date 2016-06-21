@@ -10,7 +10,6 @@ import com.kk.spirit.service.CorpusService;
 import com.kk.spirit.utils.JSONUtil;
 /**
  * 
- * <功能详细描述>
  * 
  * @author  huangteng
  * @date  2016年5月11日
@@ -24,7 +23,7 @@ public class CorpusController {
 	
 	/**
 	 * 文集列表展示
-	 * <功能详细描述>
+	 * 
 	 */
 	@ResponseBody
 	@RequestMapping("/list")
@@ -36,7 +35,7 @@ public class CorpusController {
 	
 	/**
 	 * 新建或者修改的文集--保存
-	 * <功能详细描述>
+	 * 
 	 */
 	@RequestMapping("/save")
 	@ResponseBody
@@ -53,7 +52,7 @@ public class CorpusController {
 	
 	/**
 	 * 文集--删除（移动到回收站）
-	 * <功能详细描述>
+	 *
 	 */
 	@RequestMapping("/delete")
 	@ResponseBody
@@ -61,4 +60,5 @@ public class CorpusController {
 		corpusService.delete(corpus);
 		return "true";
 	}
+	
 }

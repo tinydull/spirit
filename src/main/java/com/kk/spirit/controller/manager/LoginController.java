@@ -21,7 +21,7 @@ import com.kk.spirit.utils.JSONUtil;
 
 /**
  * 登录空值类
- * <功能详细描述>
+ * 
  * 
  * @author  huangteng
  * @date  2016年5月10日
@@ -36,7 +36,7 @@ public class LoginController {
     private UserService userService; 
     /**
      * 跳转到登录的页面
-     * <功能详细描述>
+     * 
      */
     @RequestMapping({"/admin", "login"})
     public String login(HttpServletRequest req) {
@@ -48,7 +48,7 @@ public class LoginController {
 
     /**
      * 登录的方法，验证用户名和密码
-     * <功能详细描述>
+     * 
      */
     @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
     @ResponseBody
@@ -78,7 +78,7 @@ public class LoginController {
 
     /**
      * 登录成功后跳转到后台管理的主页面
-     * <功能详细描述>
+     * 
      */
     @RequestMapping("/main")
     public ModelAndView main() {
@@ -90,7 +90,7 @@ public class LoginController {
 
     /**
      * 退出登录的功能
-     * <功能详细描述>
+     * 
      */
     @RequestMapping("/logout")
     public String logout() {
