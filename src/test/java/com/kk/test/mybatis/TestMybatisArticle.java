@@ -45,7 +45,6 @@ public class TestMybatisArticle {
 	public void testUser() throws IOException {
 		List<Article> list = session.selectList("com.kk.spirit.dao.ArticleDao.queryArticles", null);
 		System.out.println(list);
-		org.junit.Assert.assertNull(list);
 	}
 	
 	

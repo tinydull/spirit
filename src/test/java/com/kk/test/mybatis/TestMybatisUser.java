@@ -46,7 +46,6 @@ public class TestMybatisUser {
 	public void testUser() throws IOException {
 		UserEntity user = session.selectOne("com.kk.spirit.dao.UserDao.userLoginByUsername", "admin");
 		System.out.println(user);
-		org.junit.Assert.assertNull(user);
 	}
 	
 	
