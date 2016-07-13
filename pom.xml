@@ -257,9 +257,14 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-			<!-- <plugin> <artifactId>maven-surefire-plugin</artifactId> <configuration> 
-				<includes> <include>**/*Tests.java</include> </includes> </configuration> 
-				</plugin> -->
+			<plugin> 
+				<artifactId>maven-surefire-plugin</artifactId> 
+				<configuration> 
+					<includes> 
+						<include>**/Tests*.java</include> 
+					</includes> 
+				</configuration> 
+			</plugin>
 		</plugins>
 	</build>
 </project>
