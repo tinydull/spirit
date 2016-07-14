@@ -216,12 +216,34 @@
 			<version>1.2.1</version>
 		</dependency>
 		
+		
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+	
+		<!-- redis -->
+		<dependency>
+    		<groupId>redis.clients</groupId>
+    		<artifactId>jedis</artifactId>
+    		<version>2.7.3</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+		<dependency>
+    		<groupId>org.springframework.data</groupId>
+    		<artifactId>spring-data-redis</artifactId>
+    		<version>1.7.1.RELEASE</version>
+		</dependency>
+		
 		<!-- 七牛云存储  -->
 		<dependency>
     		<groupId>com.qiniu</groupId>
