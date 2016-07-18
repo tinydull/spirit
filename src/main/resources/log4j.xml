@@ -61,7 +61,6 @@
     <!-- ++++++++++++++++++++++++ -->
     
     <!-- spring提供的数据源打印日志 -->
-    <!--
     <logger name="com.springframework" additivity="true">
          <level value="DEBUG"/>
      </logger>
@@ -90,7 +89,7 @@
     <logger name="java.sql.ResultSet" additivity="true">
         <level value="DEBUG"/>
     </logger>
-    -->
+  
     <root>
         <level value="INFO"/>
         <!-- 注意ref中的大小写，就是前面配置的appender的name -->
