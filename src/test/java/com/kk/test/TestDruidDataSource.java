@@ -16,8 +16,8 @@ public class TestDruidDataSource {
 		dataSource.setInitialSize(10);
 		dataSource.setMaxActive(50);
 		dataSource.setMinIdle(10);
-		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/spirit?useUnicode=true&characterEncoding=UTF-8");
-		for(int i = 0; i < 5; i++) {
+		dataSource.setUrl("jdbc:mysql://192.168.1.128:3306/spirit?useUnicode=true&characterEncoding=UTF-8");
+		for(int i = 0; i < 500; i++) {
 			new Thread(new Runnable() {
 				
 				@Override

@@ -71,5 +71,22 @@ public class TestRedis {
 		redis.close();
 		System.out.println();
 	}
+	@Test
+	public void testSet() {
+		long s = System.currentTimeMillis();
+		ShardedJedis redis = shardedJedisPool.getResource();
+		for (int i = 0; i < 10000; i++) {
+			redis.set("name" + i, "黄腾" + i);			
+		}
+		redis.close();
+		System.out.println(System.currentTimeMillis() - s);
+	}
+	
+	@Test
+	public void testGet() {
+		long s = System.currentTimeMillis();
+		String value = shardedJedisPool.getResource().get("name");
+		System.out.println(System.currentTimeMillis() - s);
+	}
 	
 }
