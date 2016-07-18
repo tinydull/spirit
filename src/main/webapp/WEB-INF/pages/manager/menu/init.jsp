@@ -20,15 +20,16 @@
 $(document).ready(function(){
 	var setting = {
 			async: {
-				enable: true,
-				url: window.contextPath +  '/menu/list.do'
+				enable: false,
+				url: window.contextPath +  '/manager/menu/list.do'
 			},
 			check: {
 				enable: true
 			},
 			data: {
 				simpleData: {
-					enable: true
+					enable: true,
+					pIdKey: "pid"
 				},
 				key: {
 					url:'xurl'
@@ -36,15 +37,23 @@ $(document).ready(function(){
 			},
 			callback: {
 				onClick: function zTreeOnClick(event, treeId, treeNode) {
+					/* 清空右边的区域 */
 				    $('#ff').form('clear');
 			    	$('#ff').form('load', treeNode);
-			    	
 				}
 			}
 		};
-	var zNodes =[];
-	zNodes = ${result};
-	var zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+	
+	$.ajax({url: window.contextPath +  '/manager/menu/list.do',
+			type: 'POST',
+			dataType: 'json',
+			success: function(data) {
+				var zNodes = data;
+				var zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			},
+			error: function(data) {
+				alert('初始化失败！');
+			}});
  });		
  
 	function addSibling() {
@@ -52,7 +61,7 @@ $(document).ready(function(){
 		var nodes = treeObj.getSelectedNodes();
 		console.log();
 		if (nodes.length) {
-		 	var n = treeObj.addNodes(nodes[0].getParentNode(), -1, {"id" : "", "pId": nodes[0].getParentNode().id, name: "new Node"});
+		 	var n = treeObj.addNodes(nodes[0].getParentNode(), -1, {"id" : "", "pid": nodes[0].getParentNode().id, name: "new Node"});
 		 	//treeObj.selectNode(n);
 		}else {
 			alert('请选择节点！');
@@ -63,7 +72,7 @@ $(document).ready(function(){
 		var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
 		var nodes = treeObj.getSelectedNodes();
 		if (nodes.length) {
-		 	var n = treeObj.addNodes(nodes[0], -1, {"id" : "", "pId": nodes[0].id, name: "new Node"});	
+		 	var n = treeObj.addNodes(nodes[0], -1, {"id" : "", "pid": nodes[0].id, name: "new Node"});	
 		 	//treeObj.selectNode(n);
 		}else {
 			alert('请选择节点！');
@@ -76,7 +85,7 @@ $(document).ready(function(){
 	
 	function submitForm() {
 		$('#ff').form('submit', {
-			url: window.contextPath +  '/menu/save.do',
+			url: window.contextPath +  '/manager/menu/save.do',
 			
 			onSubmit: function() {
 				// 提交过程中
@@ -131,7 +140,7 @@ $(document).ready(function(){
    				<div class="form-group">
       				<label for="firstremark" class="col-sm-2 control-label">备注</label>
       				<div class="col-sm-10">
-         				<input type="text" class="form-control" id="firstremark" name="remark" placeholder="">
+         				<input type="text" class="form-control" id="firstremark" name="remark" placeholder="备注">
       				</div>
    				</div>
    				<div class="form-group" >
