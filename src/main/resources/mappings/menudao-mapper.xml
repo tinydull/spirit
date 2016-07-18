@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.spirit.dao.MenuDao">    
+	
+    <insert id="insert" parameterType="com.kk.spirit.entity.MenuEntity" useGeneratedKeys="true" keyProperty="id">
+    	INSERT INTO 
+    		T_MENU(NAME, 
+    				DES,
+    				URL, 
+    				PARENTID,
+    				CREATETIME,
+    			UPDATETIME) VALUES (
+    				#{name},
+    				#{des},
+    				#{url},
+    				#{pid},
+    				NOW(),
+    				NOW()
+    			)
+    </insert>
+    
+    <delete id="delete" parameterType="com.kk.spirit.entity.MenuEntity">
+    	UPDATE T_MENU SET ISVALID = 0 WHERE ID = #{id}
+    </delete>
+    
+    <update id="update" parameterType="com.kk.spirit.entity.MenuEntity">
+    	UPDATE T_MENU SET 
+    		NAME = #{name}, 
+    		DES  = #{des},
+    		PARENTID  = #{pid},
+    		URL  = #{url},
+    		ISVALID = #{isvalid},
+    		UPDATETIME = NOW() 
+    	WHERE ID = #{id}
+    </update>
+    
+    <select id="queryMenus" resultType="com.kk.spirit.entity.MenuEntity">
+    	SELECT 	ID,
+    			NAME, 
+    			DES,
+    			PARENTID PID,
+    			ISVALID,
+    			URL, 
+    			CREATETIME,
+    			UPDATETIME
+    	FROM 
+    			T_MENU 
+    	WHERE ISVALID = 1
+    </select>
+	
+</mapper>

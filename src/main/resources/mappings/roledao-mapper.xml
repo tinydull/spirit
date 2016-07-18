@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.spirit.dao.RoleDao">    
+	
+    <select id="userLoginByUsername" parameterType="string"  resultType="com.kk.spirit.entity.UserEntity">
+    	SELECT 	ID,
+    			USERNAME, 
+    			REALNAME,
+    			PASSWORD, 
+    			EMAIL 
+    	FROM 
+    			T_USER 
+    	WHERE USERNAME = #{value}
+    </select>
+	
+	<select id="queryUsers" parameterType="hashmap" resultType="com.kk.spirit.entity.UserEntity">
+		SELECT 	ID,
+				USERNAME, 
+    			PASSWORD, 
+    			EMAIL,
+    			REALNAME,
+    			SEX,
+    			PHONE,
+    			QQ
+    	FROM 
+    			T_USER 
+		<if test="name != null">
+	    	WHERE USERNAME LIKE CONCAT('%', #{name}, '%')		
+		</if>    			
+		LIMIT #{page}, #{limit}
+	</select>
+
+	<select id="queryTotal" parameterType="string" resultType="int">
+		SELECT COUNT(*) FROM T_USER 
+		<if test="value != null">
+			WHERE USERNAME LIKE CONCAT('%', #{name}, '%')
+		</if>
+	</select>
+
+	<select id="queryUserById" parameterType="string" resultType="com.kk.spirit.entity.UserEntity">
+		SELECT 
+			ID,
+			USERNAME, 
+    		PASSWORD, 
+    		EMAIL,
+    		REALNAME,
+    		SEX,
+    		PHONE,
+    		QQ
+		FROM T_USER WHERE ID = #{value}
+	</select>
+	
+	<update id="update">
+		UPDATE  T_USER SET
+			USERNAME = #{username}, 
+    		PASSWORD = #{password}, 
+    		EMAIL    = #{email},
+    		SEX      = #{sex},
+    		PHONE    = #{phone},
+    		QQ       = #{qq}
+		WHERE ID = #{id}
+	</update>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO T_USER(
+			USERNAME, 
+    		PASSWORD, 
+    		EMAIL,
+    		SEX,
+    		PHONE,
+    		QQ)
+    	VALUES( #{username},
+    			#{password},
+    			#{email},
+    			#{sex},
+    			#{phone},
+    			#{qq})
+	</insert>	
+</mapper>

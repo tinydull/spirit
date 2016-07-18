@@ -9,7 +9,7 @@
         	<param-value>webapp.root</param-value>
     	</context-param>
 	<!-- 配置shiro的核心拦截器 -->
-	<filter>
+	<!-- <filter>
 		<filter-name>shiroFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 		<init-param>  
@@ -20,7 +20,7 @@
 	<filter-mapping>
 		<filter-name>shiroFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
   
   	<!-- spring的核心servlet -->
     <servlet>

@@ -15,8 +15,9 @@
     </environments>
     
     <mappers>
-         <mapper resource="mappings/userDao-mapper.xml"/>
+         <mapper resource="mappings/userdao-mapper.xml"/>
          <mapper resource="mappings/article-mapper.xml"/>
+         <mapper resource="mappings/menudao-mapper.xml"/>
     </mappers>
     
     

@@ -88,6 +88,12 @@ public class UserServiceImpl implements UserService
         return 1;
     }
 
+	@Override
+	public int delete(UserEntity user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
    
     
 }
