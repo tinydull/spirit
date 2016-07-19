@@ -20,7 +20,7 @@ import com.kk.spirit.service.UserService;
 import com.kk.spirit.utils.JSONUtil;
 
 /**
- * 登录空值类
+ * 登录控制类
  * 
  * 
  * @author  huangteng
@@ -38,11 +38,8 @@ public class LoginController {
      * 跳转到登录的页面
      * 
      */
-    @RequestMapping({"/admin", "login"})
+    @RequestMapping({"/admin", "/login"})
     public String login(HttpServletRequest req) {
-    	System.out.println(req);
-        log.debug("跳转到登录页面！");
-        System.out.println("ddd");
         return "manager/login";
     }
 
@@ -82,8 +79,7 @@ public class LoginController {
      */
     @RequestMapping("/main")
     public ModelAndView main() {
-        log.debug("跳转到主页面！");
-
+       
         ModelAndView mv = new ModelAndView("manager/main");
         return mv;
     }
@@ -94,7 +90,6 @@ public class LoginController {
      */
     @RequestMapping("/logout")
     public String logout() {
-        log.debug("退出登录！");
         // 菜单信息 ，需要根据用户权限取得
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
@@ -103,14 +98,13 @@ public class LoginController {
     
     @RequestMapping("/error")
     public ModelAndView error() {
+    	
         ModelAndView mv = new ModelAndView("manager/error");
-
         return mv;
     }
 
     @RequestMapping("/welcome")
     public ModelAndView welcome() {
-        log.debug("跳转到欢迎页面！");
         
         ModelAndView mv = new ModelAndView("manager/welcome");
         return mv;
