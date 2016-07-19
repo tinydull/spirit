@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.kk.spirit.entity.SystemInfo;
 import com.kk.spirit.entity.UserEntity;
 import com.kk.spirit.service.UserService;
 import com.kk.spirit.utils.JSONUtil;
+import com.kk.spirit.utils.SystemInfoUtil;
 
 /**
  * 登录控制类
@@ -98,16 +101,16 @@ public class LoginController {
     
     @RequestMapping("/error")
     public ModelAndView error() {
-    	
         ModelAndView mv = new ModelAndView("manager/error");
         return mv;
     }
 
     @RequestMapping("/welcome")
     public ModelAndView welcome() {
-        
-        ModelAndView mv = new ModelAndView("manager/welcome");
-        return mv;
+    	SystemInfo sys = SystemInfoUtil.property();
+    	ModelAndView mv = new ModelAndView("manager/welcome");
+    	mv.addObject("sys", sys);
+    	return mv;
     }
 
 

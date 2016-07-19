@@ -24,6 +24,7 @@ public class TestSpringMenu {
 		MenuEntity menu = new MenuEntity();
 		menu.setDes("首页");
 		menu.setName("首页");
+		menu.setPid(13);
 		menu.setUrl("http:www.baidu.com");
 		System.out.println(menuService.insert(menu));
 	}

@@ -12,17 +12,26 @@
 <script type="text/javascript" src="${ctx}/static/lib/zTree_v3-master/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="${ctx}/static/lib/zTree_v3-master/js/jquery.ztree.excheck.js"></script>
 <style>
-	
+#left {
+	overflow: auto;
+}	
 </style>
 <script type="text/javascript">
 $(function() {
+	$('#left').height($(window).height() - 50);
+	$('#right').height($(window).height() - 50);
+	$('#mainFrame').height($('#right').height());
+	$('#mainFrame').width($('#right').width());
+	initMenuTree();
+});
+function initMenuTree() {
 	var setting = {
 			async: {
 				enable: false,
 				url: window.contextPath +  '/manager/menu/list.do'
 			},
 			check: {
-				enable: true
+				enable: false
 			},
 			data: {
 				simpleData: {
@@ -35,7 +44,7 @@ $(function() {
 			},
 			callback: {
 				onClick: function zTreeOnClick(event, treeId, treeNode) {
-					
+					$('#mainFrame').attr('src', treeNode.url);
 				}
 			}
 		};
@@ -51,7 +60,7 @@ $(function() {
 				alert('初始化失败！');
 			}
 	});
-});
+}
 </script>
 </head>
 <body class="container-fluid">
@@ -77,11 +86,13 @@ $(function() {
 	</div>
 	<!-- 左边的菜单树区域 -->
 	<div id="left" class="col-md-2">
-		<ul id="treeMenu" class="ztree"></ul>
+		<ul id="treeMenu" class="ztree"></ul>		
 	</div>
 	<!-- 右边的主要区域的内容，基本信息等功能 -->
-	<div id="right" class="col-md-2">
-		right
+	<div id="right" class="col-md-10">
+		<iframe id="mainFrame" scrolling="auto" src="${ctx}/manager/welcome.do" frameborder="0">
+			
+		</iframe>
 	</div>
 </body>
 </html>

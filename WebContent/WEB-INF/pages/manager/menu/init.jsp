@@ -8,6 +8,11 @@
 <title>菜单管理</title>
 <jsp:include page="../include.jsp"></jsp:include>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
+<!-- zTree控件 -->
+<link rel="stylesheet" type="text/css" href="${ctx}/static/lib/zTree_v3-master/css/metroStyle/metroStyle.css">
+<script type="text/javascript" src="${ctx}/static/lib/zTree_v3-master/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="${ctx}/static/lib/zTree_v3-master/js/jquery.ztree.excheck.js"></script>
+
 <style type="text/css">
 .container .row{
 	margin-top: 30px;
