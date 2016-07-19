@@ -1,8 +1,11 @@
 package com.kk.spirit.controller.manager;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kk.spirit.entity.CpuInfo;
+import com.kk.spirit.entity.Memory;
 import com.kk.spirit.entity.SystemInfo;
 import com.kk.spirit.entity.UserEntity;
 import com.kk.spirit.service.UserService;
@@ -108,10 +113,25 @@ public class LoginController {
     @RequestMapping("/welcome")
     public ModelAndView welcome() {
     	SystemInfo sys = SystemInfoUtil.property();
+    	Memory memory = SystemInfoUtil.memory();
+    	List<CpuInfo> cpus = SystemInfoUtil.cpu();
     	ModelAndView mv = new ModelAndView("manager/welcome");
     	mv.addObject("sys", sys);
+    	mv.addObject("mem", memory);
+    	mv.addObject("cpus", cpus);
     	return mv;
     }
 
+    @RequestMapping("/systeminfo")
+    @ResponseBody
+    public String systeminfo() {
+//    	SystemInfo sys = SystemInfoUtil.property();
+    	Memory memory = SystemInfoUtil.memory();
+    	List<CpuInfo> cpus = SystemInfoUtil.cpu();
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	map.put("mem", memory);
+    	map.put("cpus", cpus);
+    	return JSONUtil.writeJson(map);
+    }
 
 }

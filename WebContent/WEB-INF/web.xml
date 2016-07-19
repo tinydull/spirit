@@ -95,6 +95,9 @@
    		<servlet-name>DruidStatView</servlet-name>  
    		<url-pattern>/druid/*</url-pattern>  
  	</servlet-mapping>
- 	
+ 	 
+ 	<listener>  
+    	<listener-class>com.kk.spirit.listener.SystemListener</listener-class>  
+	</listener>
  	
 </web-app>
