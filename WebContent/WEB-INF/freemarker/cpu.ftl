@@ -2,24 +2,26 @@
 <div class='row'>
 	<h2>CPU信息</h2>
 	<#list cpus as cpu>
+		<#if (cpu_index= 0)>
+		<div class='col-md-12'>
+			<table class='table table-condensed table-striped table-bordered'>
+				<tr>
+					<td>CPU的总量MHz</td>
+					<td>${cpu.mhz}</td>
+					<td>CPU生产商</td>
+					<td>${cpu.vendor}</td>
+				</tr>
+				<tr>
+					<td>CPU类别</td>
+					<td>${cpu.model}</td>
+					<td>CPU缓存数量</td>
+					<td>${cpu.size}</td>
+				</tr>
+			</table>
+		</div>
+		</#if>
 		<div class='col-md-3'>
 		<table class='table table-condensed table-striped table-bordered'>
-			<tr>
-				<td>CPU的总量MHz</td>
-				<td>${cpu.mhz}</td>
-			</tr>
-			<tr>
-				<td>CPU生产商</td>
-				<td>${cpu.vendor}</td>
-			</tr>
-			<tr>
-				<td>CPU类别</td>
-				<td>${cpu.model}</td>
-			</tr>
-			<tr>
-				<td>CPU缓存数量</td>
-				<td>${cpu.size}</td>
-			</tr>
 			<tr>
 				<td>CPU用户使用率</td>
 				<td>${cpu.user}</td>

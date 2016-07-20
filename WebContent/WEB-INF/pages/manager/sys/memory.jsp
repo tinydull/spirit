@@ -128,7 +128,9 @@
 </script>
 </head>
 <body class="container">
-	<div id="infoarea"></div>
+	<div id="infoarea">
+		${information}
+	</div>
 	<div id="container" style="min-width:700px;height:400px"></div>
 </body>
 </html>
