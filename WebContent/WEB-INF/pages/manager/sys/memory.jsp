@@ -117,7 +117,7 @@
 			        			point.update(newVal);
 			        		},
 			        		error:function(data) {
-			        			
+			        			console.log('错误信息' + data);
 			        		}
 			        });
 			    }, 2000);
@@ -131,6 +131,6 @@
 	<div id="infoarea">
 		${information}
 	</div>
-	<div id="container" style="min-width:700px;height:400px"></div>
+	<div id="container" style="height:400px"></div>
 </body>
 </html>

@@ -8,8 +8,7 @@
 <jsp:include page="../include.jsp"></jsp:include>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
-<script type="text/javascript">
-		$(function () {                                                                     
+<script type="text/javascript">                                                           
 		    $(document).ready(function() {                                                  
 				window.contextPath = '${ctx}';
 		        Highcharts.setOptions({                                                     
@@ -43,8 +42,16 @@
 		                            			}
 		                            		},
 		                            		error: function(data) {
-		                            			console.log('错误信息');
-		                            			
+		                            			console.log('错误信息' + data);
+		                            			console.log(data);
+		                            			console.log(series.curIndex);
+		                            			if (series.curIndex) {
+			                            			var y = data[series.curIndex].combined.replace('%', '') / 1;
+						                            series.addPoint([x, y], true, true);                    	
+		                            			} else {
+			                            			var y = data[0].combined.replace('%', '') / 1;
+						                            series.addPoint([x, y], true, true);                    
+		                            			}
 		                            		}
 		                            });
 		                           
@@ -55,11 +62,11 @@
 	                            			$('#infoarea').html(data);
 	                            		},
 	                            		error: function(data) {
-	                            			console.log('错误信息');
-	                            			
+	                            			console.log('错误信息' + data);
+	                            			console.log(data);
 	                            		}
 	                            });
-		                        }, 1000);                                                   
+		                        }, 2000);                                                   
 		                    }                                                               
 		                }                                                                   
 		            },                                                                      
@@ -114,14 +121,13 @@
 		            }]                                                                      
 		        });                                                                         
 		    });                                                                             
-		                                                                                    
-		});                                                                                 				
+		                                                                                                                                                              				
 			
 
 function cpuselect() {
 	var val = $('#cpusel').val();
 	var chart = $('#container').highcharts();
-	for (i = 0; i < chart.series[0].data.length; i++) {
+	for (var i = 0; i < chart.series[0].data.length; i++) {
 		console.log("val:" + val);
 		chart.series[0].curIndex = val;
 		chart.series[0].data[i].y = 0;

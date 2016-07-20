@@ -6,16 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.hyperic.sigar.CpuInfo;
 import org.hyperic.sigar.CpuPerc;
 import org.hyperic.sigar.Mem;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
 import org.hyperic.sigar.Swap;
-
 import com.kk.spirit.entity.Memory;
 import com.kk.spirit.entity.SystemInfo;
 
@@ -39,11 +35,11 @@ public class SystemInfoUtil {
         String userName = map.get("USERNAME");// 获取用户名
         String computerName = map.get("COMPUTERNAME");// 获取计算机名
 //        System.out.println("用户名:    " + userName);
-        sys.setSysname(userName);
+        sys.setSysname(userName == null ? "" : userName);
 //        System.out.println("计算机名:    " + computerName);
-        sys.setComname(computerName);
+        sys.setComname(computerName == null ? "" : computerName);
 //        System.out.println("本地ip地址:    " + ip);
-        sys.setSysip(ip);
+        sys.setSysip(ip == null ? "" : ip);
 //        System.out.println("JVM可以使用的总内存:    " + r.totalMemory() / 1024L);
         sys.setTotalMemory(r.totalMemory() / 1024L);
 //        System.out.println("JVM可以使用的剩余内存:    " + r.freeMemory() / 1024L);
@@ -78,7 +74,7 @@ public class SystemInfoUtil {
 //            	System.out.println("CPU的总量MHz:    " + info.getMhz());// CPU的总量MHz
             	cpu.setMhz(info.getMhz());
 //            	System.out.println("CPU生产商:    " + info.getVendor());// 获得CPU的卖主，如：Intel
-            	cpu.setVendor(info.getVendor());
+            	cpu.setVendor("");
 //            	System.out.println("CPU类别:    " + info.getModel());// 获得CPU的类别，如：Celeron
             	cpu.setModel(info.getModel());
 //            	System.out.println("CPU缓存数量:    " + info.getCacheSize());// 缓冲存储器数量
@@ -141,17 +137,11 @@ public class SystemInfoUtil {
 	
 	
 	public static void main(String[] args) {
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-			
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
+		
 				cpu();
 				memory();
 				property();
-			}
-		}, 1000, 2000);
+			
 		
 	}
 }
