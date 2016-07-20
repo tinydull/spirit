@@ -73,6 +73,7 @@ public class SystemController {
 		model.put("cpus", cpus);
 		String html = FreeMarkerTemplateUtils.processTemplateIntoString(temp, model);
 		mv.addObject("information", html);
+		mv.addObject("cputotal", cpus);
 		return mv;
 	}
 	
@@ -95,17 +96,22 @@ public class SystemController {
     @RequestMapping(value="/cpuinfo", produces="text/html;charset=UTF-8")
     @ResponseBody
     public String cpuinfo(HttpServletRequest req) throws IOException, TemplateException {
+    	List<CpuInfo> cpus = SystemInfoUtil.cpu();
+    	return JSONUtil.writeJson(cpus);
+    }
+	
+    @RequestMapping(value="/cpuinfolist", produces="text/html;charset=UTF-8")
+    @ResponseBody
+    public String cpuinfolist(HttpServletRequest req) throws IOException, TemplateException {
     	Configuration conf = new Configuration();
     	conf.setDefaultEncoding("UTF-8");
 //		conf.setDirectoryForTemplateLoading(new File("C:\\Users\\huangteng\\git\\spirit123\\WebContent\\WEB-INF\\freemarker\\"));
     	conf.setServletContextForTemplateLoading(req.getServletContext(), "/WEB-INF/freemarker/");
     	List<CpuInfo> cpus = SystemInfoUtil.cpu();
-//    	Template temp = conf.getTemplate("cpu.ftl");
-//    	Map<String, Object> model = new HashMap<String, Object>();
-//		model.put("cpus", cpus);
-//		String html = FreeMarkerTemplateUtils.processTemplateIntoString(temp, model);
-    	return JSONUtil.writeJson(cpus);
+    	Template temp = conf.getTemplate("cpu.ftl");
+    	Map<String, Object> model = new HashMap<String, Object>();
+		model.put("cpus", cpus);
+		String html = FreeMarkerTemplateUtils.processTemplateIntoString(temp, model);
+    	return html;
     }
-	
-	
 }

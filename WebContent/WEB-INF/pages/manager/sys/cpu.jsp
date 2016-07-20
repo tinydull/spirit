@@ -33,13 +33,31 @@
 		                            		type: 'GET',
 		                            		dataType: 'json',
 		                            		success: function(data) {
-		                            			var y = data[0].combined.replace('%', '') / 1;
-					                            series.addPoint([x, y], true, true);                    
+		                            			if (series.curIndex) {
+			                            			var y = data[series.curIndex].combined.replace('%', '') / 1;
+						                            series.addPoint([x, y], true, true);                    	
+		                            			} else {
+			                            			var y = data[0].combined.replace('%', '') / 1;
+						                            series.addPoint([x, y], true, true);                    
+		                            			}
 		                            		},
 		                            		error: function(data) {
 		                            			console.log('错误信息');
 		                            			
-		                            		}})
+		                            		}
+		                            });
+		                           
+		                            $.ajax({url :window.contextPath + '/manager/system/cpuinfolist.do',
+	                            		type: 'GET',
+	                            		dataType: 'html',
+	                            		success: function(data) {
+	                            			$('#infoarea').html(data);
+	                            		},
+	                            		error: function(data) {
+	                            			console.log('错误信息');
+	                            			
+	                            		}
+	                            });
 		                        }, 1000);                                                   
 		                    }                                                               
 		                }                                                                   
@@ -103,21 +121,28 @@ function cpuselect() {
 	var val = $('#cpuselect').val();
 	var chart = $('#container').highcharts();
 	for (i = 0; i < chart.series[0].data.length; i++) {
+		chart.series[0].curIndex = val;
 		chart.series[0].data[i].y = 0;
 	}
 	chart.redraw();
-	
 	
 }
 </script>
 </head>
 <body class="container">
 	<div id="infoarea">${information}</div>
-	<select id="cpunumber" onchange="cpuselect()" class="form-control">
-		<option value="0">CPU1</option>
-		<option value="1">CPU2</option>
-		<option value="2">CPU3</option>
-	</select>
+	<form class="form-horizontal">
+		<div class="form-group">
+	    	<label for="inputEmail3" class="col-sm-2 control-label">请选择一个CPU查看：</label>
+	    	<div class="col-sm-10">
+	      		<select class="form-control" onchange="cpuselect()">
+					<c:forEach var="cp" items="${cputotal}" varStatus="status">
+						<option value="${status.index}">第 ${status.index} 个 CPU</option>		
+					</c:forEach>
+				</select>
+	    	</div>
+	  	</div>
+	</form>
 	<div id="container" style="min-width: 700px; height: 400px"></div>
 </body>
 </html>
