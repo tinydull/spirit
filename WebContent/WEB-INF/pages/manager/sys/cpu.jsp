@@ -33,6 +33,7 @@
 		                            		type: 'GET',
 		                            		dataType: 'json',
 		                            		success: function(data) {
+		                            			console.log(series.curIndex);
 		                            			if (series.curIndex) {
 			                            			var y = data[series.curIndex].combined.replace('%', '') / 1;
 						                            series.addPoint([x, y], true, true);                    	
@@ -118,9 +119,10 @@
 			
 
 function cpuselect() {
-	var val = $('#cpuselect').val();
+	var val = $('#cpusel').val();
 	var chart = $('#container').highcharts();
 	for (i = 0; i < chart.series[0].data.length; i++) {
+		console.log("val:" + val);
 		chart.series[0].curIndex = val;
 		chart.series[0].data[i].y = 0;
 	}
@@ -135,7 +137,7 @@ function cpuselect() {
 		<div class="form-group">
 	    	<label for="inputEmail3" class="col-sm-2 control-label">请选择一个CPU查看：</label>
 	    	<div class="col-sm-10">
-	      		<select class="form-control" onchange="cpuselect()">
+	      		<select id= "cpusel" class="form-control" onchange="cpuselect()">
 					<c:forEach var="cp" items="${cputotal}" varStatus="status">
 						<option value="${status.index}">第 ${status.index} 个 CPU</option>		
 					</c:forEach>
