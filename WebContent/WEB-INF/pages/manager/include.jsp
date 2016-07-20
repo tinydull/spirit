@@ -24,6 +24,11 @@
 <script type="text/javascript" src="${ctx}/static/lib/jquery-easyui-v1.4.4/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/lib/jquery-easyui-v1.4.4/locale/easyui-lang-zh_CN.js"></script>
 
+<!-- highchart图表 -->
+<script type="text/javascript" src="${ctx}/static/lib/Highcharts-4.2.5/js/highcharts.js"></script> 
+<script type="text/javascript" src="${ctx}/static/lib/Highcharts-4.2.5/js/highcharts-more.js"></script>
+<script type="text/javascript" src="${ctx}/static/lib/Highcharts-4.2.5/js/modules/exporting.js"></script>
+
 <!-- 引入自定义的样式文件  -->
 <link rel="stylesheet" href="${ctx}/static/css/style.css" media="screen" />
 <script type="text/javascript">

@@ -9,6 +9,9 @@ public class Memory {
 	private long stotal;
 	private long sused;
 	private long sfree;
+	
+	private long percent;
+	
 	public long getMtotal() {
 		return mtotal;
 	}
@@ -45,6 +48,13 @@ public class Memory {
 	public void setSfree(long sfree) {
 		this.sfree = sfree;
 	}
+	public long getPercent() {
+		return percent;
+	}
+	public void setPercent(long percent) {
+		this.percent = percent;
+	}
+	
 	
 	
 	

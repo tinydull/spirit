@@ -7,10 +7,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import com.kk.spirit.entity.MenuEntity;
 import com.kk.spirit.service.MenuService;
 import com.kk.spirit.utils.JSONUtil;
+
+import freemarker.template.Template;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:applicationContext.xml" })

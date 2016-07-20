@@ -1,5 +1,7 @@
 package com.kk.spirit.controller.manager;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +29,10 @@ import com.kk.spirit.entity.UserEntity;
 import com.kk.spirit.service.UserService;
 import com.kk.spirit.utils.JSONUtil;
 import com.kk.spirit.utils.SystemInfoUtil;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 /**
  * 登录控制类
@@ -87,7 +94,6 @@ public class LoginController {
      */
     @RequestMapping("/main")
     public ModelAndView main() {
-       
         ModelAndView mv = new ModelAndView("manager/main");
         return mv;
     }
@@ -112,26 +118,9 @@ public class LoginController {
 
     @RequestMapping("/welcome")
     public ModelAndView welcome() {
-    	SystemInfo sys = SystemInfoUtil.property();
-    	Memory memory = SystemInfoUtil.memory();
-    	List<CpuInfo> cpus = SystemInfoUtil.cpu();
     	ModelAndView mv = new ModelAndView("manager/welcome");
-    	mv.addObject("sys", sys);
-    	mv.addObject("mem", memory);
-    	mv.addObject("cpus", cpus);
     	return mv;
     }
 
-    @RequestMapping("/systeminfo")
-    @ResponseBody
-    public String systeminfo() {
-//    	SystemInfo sys = SystemInfoUtil.property();
-    	Memory memory = SystemInfoUtil.memory();
-    	List<CpuInfo> cpus = SystemInfoUtil.cpu();
-    	Map<String, Object> map = new HashMap<String, Object>();
-    	map.put("mem", memory);
-    	map.put("cpus", cpus);
-    	return JSONUtil.writeJson(map);
-    }
-
+    
 }
