@@ -20,7 +20,7 @@ $(function () {
 });				
 
 function sysinfofunc() {
-	$.ajax({url: window.contextPath +  '/manager/systeminfo.do',
+	$.ajax({url: window.contextPath +  '/manager/system/systeminfo.do',
 			type: 'GET',
 			dataType: 'html',
 			success: function(data) {

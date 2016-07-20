@@ -145,6 +145,6 @@ function cpuselect() {
 	    	</div>
 	  	</div>
 	</form>
-	<div id="container" style="min-width: 700px; height: 400px"></div>
+	<div id="container" style="height: 400px"></div>
 </body>
 </html>
