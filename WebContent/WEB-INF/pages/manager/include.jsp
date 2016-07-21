@@ -28,6 +28,9 @@
 <script type="text/javascript" src="${ctx}/static/lib/Highcharts-4.2.5/js/highcharts.js"></script> 
 <script type="text/javascript" src="${ctx}/static/lib/Highcharts-4.2.5/js/highcharts-more.js"></script>
 <script type="text/javascript" src="${ctx}/static/lib/Highcharts-4.2.5/js/modules/exporting.js"></script>
+<script type="text/javascript" src="${ctx}/static/lib/Highcharts-4.2.5/js/adapters/standalone-framework.js"></script>
+<script type="text/javascript" src="${ctx}/static/lib/Highcharts-4.2.5/js/themes/grid.js"></script>
+
 
 <!-- 引入自定义的样式文件  -->
 <link rel="stylesheet" href="${ctx}/static/css/style.css" media="screen" />

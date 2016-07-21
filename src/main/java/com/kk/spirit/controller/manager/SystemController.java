@@ -1,6 +1,5 @@
 package com.kk.spirit.controller.manager;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +10,12 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.kk.spirit.entity.CpuInfo;
+import com.kk.spirit.entity.Device;
 import com.kk.spirit.entity.Memory;
 import com.kk.spirit.entity.SystemInfo;
 import com.kk.spirit.utils.JSONUtil;
 import com.kk.spirit.utils.SystemInfoUtil;
-
 import freemarker.core.ParseException;
 import freemarker.template.Configuration;
 import freemarker.template.MalformedTemplateNameException;
@@ -38,7 +36,9 @@ public class SystemController {
 //		conf.setDirectoryForTemplateLoading(new File("C:\\Users\\huangteng\\git\\spirit123\\WebContent\\WEB-INF\\freemarker\\"));
 		Template temp = conf.getTemplate("sysinfo.ftl");
 		SystemInfo sys = SystemInfoUtil.property();
+		List<Device> devices = SystemInfoUtil.file();
     	Map<String, Object> model = new HashMap<String, Object>();
+    	model.put("devices", devices);
 		model.put("sys", sys);
 		String html = FreeMarkerTemplateUtils.processTemplateIntoString(temp, model);
     	return html;

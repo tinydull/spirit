@@ -58,4 +58,58 @@
 		</table>
 	</div>
 </div>
+<!-- 硬盘信息 -->
+<div class='row'>
+	<h2>计算机以及虚拟机信息</h2>
+	<#list devices as dev>
+	<div class='col-md-3'>
+		<table class='table table-condensed table-striped table-bordered'>
+			<tr>
+				<td>盘符名称</td>
+				<td>${dev.devname}</td>
+			</tr>
+			<tr>
+				<td>盘符路径</td>
+				<td>${dev.dirname}</td>
+			</tr>
+			<tr>
+				<td>盘符标志</td>
+				<td>${dev.flag}</td>
+			</tr>
+			<tr>
+				<td>盘符类型</td>
+				<td>${dev.systypename}</td>
+			</tr>
+			<tr>
+				<td>总大小</td>
+				<td>${dev.total} K</td>
+			</tr>
+			<tr>
+				<td>剩余大小</td>
+				<td>${dev.free} K</td>
+			</tr>
+			<tr>
+				<td>可用大小</td>
+				<td>${dev.avail} K</td>
+			</tr>
+			<tr>
+				<td>已经使用量</td>
+				<td>${dev.used} K</td>
+			</tr>
+			<tr>
+				<td>读出</td>
+				<td>${dev.diskreads}</td>
+			</tr>
+			<tr>
+				<td>写入</td>
+				<td>${dev.diskwrites}</td>
+			</tr>
+			<tr>
+				<td>资源的利用率</td>
+				<td>${dev.peruser} %</td>
+			</tr>
+		</table>
+	</div>
+	</#list>
+</div>
 
