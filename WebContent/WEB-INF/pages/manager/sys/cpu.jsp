@@ -25,14 +25,15 @@
 		                events: {                                                           
 		                    load: function() {                                              
 		                        // set up the updating of the chart each second             
-		                        var series = this.series[0];                                
+		                        var series = this.series;                                
 		                        setInterval(function() {                                    
 		                            var x = (new Date()).getTime(); // current time         
 		                            $.ajax({url :window.contextPath + '/manager/system/cpuinfo.do',
 		                            		type: 'GET',
 		                            		dataType: 'json',
 		                            		success: function(data) {
-		                            			console.log(series.curIndex);
+		                            			console.log(data);
+		                            			/* console.log(series.curIndex);
 		                            			if (series.curIndex) {
 			                            			var y = data[series.curIndex].combined.replace('%', '') / 1;
 						                            series.addPoint([x, y], true, true);                    	
@@ -40,9 +41,16 @@
 			                            			var y = data[0].combined.replace('%', '') / 1;
 						                            series.addPoint([x, y], true, true);                    
 		                            			}
+		                            			 */
+		                            			for (i in data) {
+		                            				var y = data[i].combined.replace('%', '') / 1;
+		                            				console.log("第" + i + "个：Y=" + y);
+						                            series[i].addPoint([x, y], true, true);   
+		                            			}
 		                            		},
 		                            		error: function(data) {
-		                            			console.log('错误信息' + data);
+		                            			console.log(data);
+		                            			/* console.log('错误信息' + data);
 		                            			console.log(data);
 		                            			console.log(series.curIndex);
 		                            			if (series.curIndex) {
@@ -51,6 +59,11 @@
 		                            			} else {
 			                            			var y = data[0].combined.replace('%', '') / 1;
 						                            series.addPoint([x, y], true, true);                    
+		                            			} */
+		                            			for (i in data) {
+		                            				var y = data[i].combined.replace('%', '') / 1;
+		                            				console.log("第" + i + "个：Y=" + y);
+						                            series[i].addPoint([x, y], true, true);   
 		                            			}
 		                            		}
 		                            });
@@ -97,13 +110,125 @@
 		                }                                                                   
 		            },                                                                      
 		            legend: {                                                               
-		                enabled: false                                                      
+		                enabled: true                                                      
 		            },                                                                      
 		            exporting: {                                                            
 		                enabled: true                                                      
 		            },                                                                      
 		            series: [{                                                              
-		                name: '系统使用率',                                                
+		                name: '系统使用率1',                                                
+		                data: (function() {                                                 
+		                    // generate an array of random data                             
+		                    var data = [],                                                  
+		                        time = (new Date()).getTime(), i;                                                          
+		                                                                                    
+		                    for (i = -20; i <= 0; i++) {                                    
+		                        data.push({                                                 
+		                            x: time + i * 1000,                                     
+		                            y: 0                                        
+		                        });                                                         
+		                    }                            
+		                    console.log(data);
+		                    return data;                                                    
+		                })()                                                                
+		            },{                                                              
+		                name: '系统使用率2',                                                
+		                data: (function() {                                                 
+		                    // generate an array of random data                             
+		                    var data = [],                                                  
+		                        time = (new Date()).getTime(), i;                                                          
+		                                                                                    
+		                    for (i = -20; i <= 0; i++) {                                    
+		                        data.push({                                                 
+		                            x: time + i * 1000,                                     
+		                            y: 0                                        
+		                        });                                                         
+		                    }                            
+		                    console.log(data);
+		                    return data;                                                    
+		                })()                                                                
+		            },{                                                              
+		                name: '系统使用率3',                                                
+		                data: (function() {                                                 
+		                    // generate an array of random data                             
+		                    var data = [],                                                  
+		                        time = (new Date()).getTime(), i;                                                          
+		                                                                                    
+		                    for (i = -20; i <= 0; i++) {                                    
+		                        data.push({                                                 
+		                            x: time + i * 1000,                                     
+		                            y: 0                                        
+		                        });                                                         
+		                    }                            
+		                    console.log(data);
+		                    return data;                                                    
+		                })()                                                                
+		            },{                                                              
+		                name: '系统使用率4',                                                
+		                data: (function() {                                                 
+		                    // generate an array of random data                             
+		                    var data = [],                                                  
+		                        time = (new Date()).getTime(), i;                                                          
+		                                                                                    
+		                    for (i = -20; i <= 0; i++) {                                    
+		                        data.push({                                                 
+		                            x: time + i * 1000,                                     
+		                            y: 0                                        
+		                        });                                                         
+		                    }                            
+		                    console.log(data);
+		                    return data;                                                    
+		                })()                                                                
+		            },{                                                              
+		                name: '系统使用率5',                                                
+		                data: (function() {                                                 
+		                    // generate an array of random data                             
+		                    var data = [],                                                  
+		                        time = (new Date()).getTime(), i;                                                          
+		                                                                                    
+		                    for (i = -20; i <= 0; i++) {                                    
+		                        data.push({                                                 
+		                            x: time + i * 1000,                                     
+		                            y: 0                                        
+		                        });                                                         
+		                    }                            
+		                    console.log(data);
+		                    return data;                                                    
+		                })()                                                                
+		            },{                                                              
+		                name: '系统使用率6',                                                
+		                data: (function() {                                                 
+		                    // generate an array of random data                             
+		                    var data = [],                                                  
+		                        time = (new Date()).getTime(), i;                                                          
+		                                                                                    
+		                    for (i = -20; i <= 0; i++) {                                    
+		                        data.push({                                                 
+		                            x: time + i * 1000,                                     
+		                            y: 0                                        
+		                        });                                                         
+		                    }                            
+		                    console.log(data);
+		                    return data;                                                    
+		                })()                                                                
+		            },{                                                              
+		                name: '系统使用率7',                                                
+		                data: (function() {                                                 
+		                    // generate an array of random data                             
+		                    var data = [],                                                  
+		                        time = (new Date()).getTime(), i;                                                          
+		                                                                                    
+		                    for (i = -20; i <= 0; i++) {                                    
+		                        data.push({                                                 
+		                            x: time + i * 1000,                                     
+		                            y: 0                                        
+		                        });                                                         
+		                    }                            
+		                    console.log(data);
+		                    return data;                                                    
+		                })()                                                                
+		            },{                                                              
+		                name: '系统使用率8',                                                
 		                data: (function() {                                                 
 		                    // generate an array of random data                             
 		                    var data = [],                                                  
@@ -141,15 +266,15 @@ function cpuselect() {
 	<div id="infoarea">${information}</div>
 	<form class="form-horizontal">
 		<div class="form-group">
-	    	<label for="inputEmail3" class="col-sm-2 control-label">请选择一个CPU查看：</label>
-	    	<div class="col-sm-10">
-	      		<select id= "cpusel" class="form-control" onchange="cpuselect()">
+			<label for="inputEmail3" class="col-sm-2 control-label">请选择一个CPU查看：</label>
+			<div class="col-sm-10">
+				<select id="cpusel" class="form-control" onchange="cpuselect()">
 					<c:forEach var="cp" items="${cputotal}" varStatus="status">
-						<option value="${status.index}">第 ${status.index} 个 CPU</option>		
+						<option value="${status.index}">第 ${status.index} 个 CPU</option>
 					</c:forEach>
 				</select>
-	    	</div>
-	  	</div>
+			</div>
+		</div>
 	</form>
 	<div id="container" style="height: 400px"></div>
 </body>
