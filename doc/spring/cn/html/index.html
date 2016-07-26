@@ -1,101 +1,168 @@
-
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>1.&nbsp;Getting Started with Spring</title>
-<link rel="stylesheet" type="text/css" href="css/manual-multipage.css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
-<link rel="home" href="index.html"
-	title="Spring Framework Reference Documentation">
-<link rel="up" href="spring-introduction.html"
-	title="Part&nbsp;I.&nbsp;Overview of Spring Framework">
-<link rel="prev" href="spring-introduction.html"
-	title="Part&nbsp;I.&nbsp;Overview of Spring Framework">
-<link rel="next" href="overview.html"
-	title="2.&nbsp;Introduction to the Spring Framework">
-</head>
-<body bgcolor="white" text="black" link="#0000FF" vlink="#840084"
-	alink="#0000FF">
-	<div class="navheader">
-		<table width="100%" summary="Navigation header">
-			<tr>
-				<th colspan="3" align="center">1.&nbsp;Getting Started with
-					Spring</th>
-			</tr>
-			<tr>
-				<td width="20%" align="left"><a accesskey="p"
-					href="spring-introduction.html">Prev</a>&nbsp;</td>
-				<th width="60%" align="center">Part&nbsp;I.&nbsp;Overview of
-					Spring Framework</th>
-				<td width="20%" align="right">&nbsp;<a accesskey="n"
-					href="overview.html">Next</a></td>
-			</tr>
-		</table>
-		<hr>
-	</div>
-	<div class="chapter">
-		<div class="titlepage">
-			<div>
-				<div>
-					<h2 class="title">
-						<a name="overview-getting-started-with-spring"
-							href="#overview-getting-started-with-spring"></a>1.&nbsp;Getting
-						Started with Spring
-					</h2>
-				</div>
-			</div>
-		</div>
 
-		<p>
-			This reference guide provides detailed information about the Spring
-			Framework. It provides comprehensive documentation for all features,
-			as well as some background about the underlying concepts (such as <span
-				class="emphasis"><em>"Dependency Injection"</em></span>) that Spring
-			has embraced.
-		</p>
-		<p>
-			If you are just getting started with Spring, you may want to begin
-			using the Spring Framework by creating a <a class="ulink"
-				href="http://projects.spring.io/spring-boot/" target="_top">Spring
-				Boot</a> based application. Spring Boot provides a quick (and
-			opinionated) way to create a production-ready Spring based
-			application. It is based on the Spring Framework, favors convention
-			over configuration, and is designed to get you up and running as
-			quickly as possible.
-		</p>
-		<p>
-			You can use <a class="ulink" href="http://start.spring.io"
-				target="_top">start.spring.io</a> to generate a basic project or
-			follow one of the <a class="ulink" href="https://spring.io/guides"
-				target="_top">"Getting Started" guides</a> like the <a class="ulink"
-				href="https://spring.io/guides/gs/rest-service/" target="_top">Getting
-				Started Building a RESTful Web Service</a> one. As well as being easier
-			to digest, these guides are very <span class="emphasis"><em>task
-					focused</em></span>, and most of them are based on Spring Boot. They also cover
-			other projects from the Spring portfolio that you might want to
-			consider when solving a particular problem.
-		</p>
-	</div>
-	<div class="navfooter">
-		<hr>
-		<table width="100%" summary="Navigation footer">
-			<tr>
-				<td width="40%" align="left"><a accesskey="p"
-					href="spring-introduction.html">Prev</a>&nbsp;</td>
-				<td width="20%" align="center"><a accesskey="u"
-					href="spring-introduction.html">Up</a></td>
-				<td width="40%" align="right">&nbsp;<a accesskey="n"
-					href="overview.html">Next</a></td>
-			</tr>
-			<tr>
-				<td width="40%" align="left" valign="top">Part&nbsp;I.&nbsp;Overview
-					of Spring Framework&nbsp;</td>
-				<td width="20%" align="center"><a accesskey="h"
-					href="index.html">Home</a></td>
-				<td width="40%" align="right" valign="top">&nbsp;2.&nbsp;Introduction
-					to the Spring Framework</td>
-			</tr>
-		</table>
-	</div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>1. Spring入门</title>
+    <link rel="stylesheet" type="text/css" href="css/manual-multipage.css">
+    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+    <link rel="home" href="index.html" title="Spring框架参考文档">
+    <link rel="up" href="spring-introduction.html" title="Spring框架的一部分，一，概述">
+    <link rel="prev" href="spring-introduction.html" title="Spring框架的一部分，一，概述">
+    <link rel="next" href="overview.html" title="2.介绍Spring框架">
+</head>
+
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+    <div class="navheader">
+        <table width="100%" summary="Navigation header">
+            <tbody>
+                <tr>
+                    <th colspan="3" align="center">
+                        <font>
+                            <font>1. Spring入门</font>
+                        </font>
+                    </th>
+                </tr>
+                <tr>
+                    <td width="20%" align="left">
+                        <a accesskey="p" href="spring-introduction.html">
+                            <font>
+                                <font>上一页</font>
+                            </font>
+                        </a>&nbsp;</td>
+                    <th width="60%" align="center">
+                        <font>
+                            <font>第一部分. Spring框架的概述</font>
+                        </font>
+                    </th>
+                    <td width="20%" align="right">&nbsp;
+                        <a accesskey="n" href="overview.html">
+                            <font>
+                                <font>下一个</font>
+                            </font>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+    <div class="chapter">
+        <div class="titlepage">
+            <div>
+                <div>
+                    <h2 class="title"><a name="overview-getting-started-with-spring" href="#overview-getting-started-with-spring"></a>
+                    <font><font>1. Spring入门</font></font></h2></div>
+            </div>
+        </div>
+        <p>
+            <font>
+                <font>本参考指南提供了有关Spring Framework的详细信息。</font>
+                <font>它提供了所有功能的详尽的文档，包括已经有的基本概念。如一些背景</font>
+            </font><span class="emphasis"><em><font><font>“依赖注入”</font></font></em></span>
+            <font>
+                <font>等Spring已经有的概念。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>如果你是刚开始使用Spring，你可能要开始创建一个使用Spring框架</font>
+            </font>
+            <a class="ulink" href="http://projects.spring.io/spring-boot/" target="_top">
+                <font>
+                    <font>Spring Boot</font>
+                </font>
+            </a>
+            <font>
+                <font>基础的应用。</font>
+                <font>Spring启动提供了一个快速（和主观）的方式来创建一个生产环境的Spring基础的应用。</font>
+                <font>它是基于Spring框架，约定优于配置，并且被设计为尽可能快地得到你和运行。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>您可以使用</font>
+            </font>
+            <a class="ulink" href="http://start.spring.io" target="_top">
+                <font>
+                    <font>start.spring.io</font>
+                </font>
+            </a>
+            <font>
+                <font>生成一个基本项目或遵循的一个</font>
+            </font>
+            <a class="ulink" href="https://spring.io/guides" target="_top">
+                <font>
+                    <font>“入门”指南</font>
+                </font>
+            </a>
+            <font>
+                <font>类的
+                </font>
+            </font>
+            <a class="ulink" href="https://spring.io/guides/gs/rest-service/" target="_top">
+                <font>
+                    <font>​​入门构建一个RESTful Web服务</font>
+                </font>
+            </a>
+            <font>
+                <font>
+                    之一。</font>
+                <font>除了 ​​作为更容易消化，这些导游都是非常</font>
+            </font><span class="emphasis"><em><font><font>的任务集中</font></font></em></span>
+            <font>
+                <font>，而且大部分都是基于Spring引导。</font>
+                <font>他们还涵盖了可能需要解决一个具体问题时要考虑Spring组合中的其他项目。</font>
+            </font>
+        </p>
+    </div>
+    <div class="navfooter">
+        <hr>
+        <table width="100%" summary="Navigation footer">
+            <tbody>
+                <tr>
+                    <td width="40%" align="left">
+                        <a accesskey="p" href="spring-introduction.html">
+                            <font>
+                                <font>上一页</font>
+                            </font>
+                        </a>&nbsp;</td>
+                    <td width="20%" align="center">
+                        <a accesskey="u" href="spring-introduction.html">
+                            <font>
+                                <font>向上</font>
+                            </font>
+                        </a>
+                    </td>
+                    <td width="40%" align="right">&nbsp;
+                        <a accesskey="n" href="overview.html">
+                            <font>
+                                <font>下一个</font>
+                            </font>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="40%" align="left" valign="top">
+                        <font>
+                            <font>第一部分. Spring框架的概述 &nbsp;</font>
+                        </font>
+                    </td>
+                    <td width="20%" align="center">
+                        <a accesskey="h" href="index.html">
+                            <font>
+                                <font>首页</font>
+                            </font>
+                        </a>
+                    </td>
+                    <td width="40%" align="right" valign="top">
+                        <font>
+                            <font>&nbsp;2.介绍Spring框架</font>
+                        </font>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>

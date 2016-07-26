@@ -1,575 +1,2149 @@
-<html><head>
-      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-   <title>2.&nbsp;Introduction to the Spring Framework</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Spring Framework Reference Documentation"><link rel="up" href="spring-introduction.html" title="Part&nbsp;I.&nbsp;Overview of Spring Framework"><link rel="prev" href="overview-getting-started-with-spring.html" title="1.&nbsp;Getting Started with Spring"><link rel="next" href="spring-whats-new.html" title="Part&nbsp;II.&nbsp;What&#8217;s New in Spring Framework 4.x"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Introduction to the Spring Framework</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="overview-getting-started-with-spring.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;I.&nbsp;Overview of Spring Framework</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="spring-whats-new.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="overview" href="#overview"></a>2.&nbsp;Introduction to the Spring Framework</h2></div></div></div>
+<html>
 
-<p>The Spring Framework is a Java platform that provides comprehensive infrastructure support
-for developing Java applications. Spring handles the infrastructure so you can focus on
-your application.</p>
-<p>Spring enables you to build applications from "plain old Java objects" (POJOs) and to
-apply enterprise services non-invasively to POJOs. This capability applies to the Java
-SE programming model and to full and partial Java EE.</p>
-<p>Examples of how you, as an application developer, can benefit from the Spring platform:</p>
-<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
-Make a Java method execute in a database transaction without having to deal with
-transaction APIs.
-</li><li class="listitem">
-Make a local Java method a remote procedure without having to deal with remote APIs.
-</li><li class="listitem">
-Make a local Java method a management operation without having to deal with JMX APIs.
-</li><li class="listitem">
-Make a local Java method a message handler without having to deal with JMS APIs.
-</li></ul></div>
-<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="overview-dependency-injection" href="#overview-dependency-injection"></a>2.1&nbsp;Dependency Injection and Inversion of Control</h2></div></div></div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>2.介绍Spring框架</title>
+    <link rel="stylesheet" type="text/css" href="css/manual-multipage.css">
+    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+    <link rel="home" href="index.html" title="Spring框架参考文档">
+    <link rel="up" href="spring-introduction.html" title="Spring框架的一部分，一，概述">
+    <link rel="prev" href="overview-getting-started-with-spring.html" title="1.入门春天">
+    <link rel="next" href="spring-whats-new.html" title="第二部分。 在Spring框架4.x版的新增功能">
+</head>
 
-<p>A Java application&#8201;&#8212;&#8201;a loose term that runs the gamut from constrained, embedded
-applications to n-tier, server-side enterprise applications&#8201;&#8212;&#8201;typically consists of
-objects that collaborate to form the application proper. Thus the objects in an
-application have <span class="emphasis"><em>dependencies</em></span> on each other.</p>
-<p>Although the Java platform provides a wealth of application development functionality,
-it lacks the means to organize the basic building blocks into a coherent whole, leaving
-that task to architects and developers. Although you can use design patterns such
-as <span class="emphasis"><em>Factory</em></span>, <span class="emphasis"><em>Abstract Factory</em></span>, <span class="emphasis"><em>Builder</em></span>, <span class="emphasis"><em>Decorator</em></span>, and <span class="emphasis"><em>Service Locator</em></span>
-to compose the various classes and object instances that make up an application,
-these patterns are simply that: best practices given a name, with a description
-of what the pattern does, where to apply it, the problems it addresses, and so forth.
-Patterns are formalized best practices that <span class="emphasis"><em>you must implement yourself</em></span> in your
-application.</p>
-<p>The Spring Framework <span class="emphasis"><em>Inversion of Control</em></span> (IoC) component addresses this concern by
-providing a formalized means of composing disparate components into a fully working
-application ready for use. The Spring Framework codifies formalized design patterns as
-first-class objects that you can integrate into your own application(s). Numerous
-organizations and institutions use the Spring Framework in this manner to engineer
-robust, <span class="emphasis"><em>maintainable</em></span> applications.</p>
-<div class="sidebar"><a name="background-ioc" href="#background-ioc"></a><div class="titlepage"><div><div><p class="title"><b>Background</b></p></div></div></div>
-
-<p>"<span class="emphasis"><em>The question is, what aspect of control are [they] inverting?</em></span>" Martin Fowler posed
-this question about Inversion of Control (IoC)
-<a class="ulink" href="http://martinfowler.com/articles/injection.html" target="_top">on his site</a> in 2004. Fowler suggested
-renaming the principle to make it more self-explanatory and came up with <span class="emphasis"><em>Dependency
-Injection</em></span>.</p>
-</div>
-</div>
-<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="overview-modules" href="#overview-modules"></a>2.2&nbsp;Modules</h2></div></div></div>
-
-<p>The Spring Framework consists of features organized into about 20 modules. These modules
-are grouped into Core Container, Data Access/Integration, Web, AOP (Aspect Oriented
-Programming), Instrumentation, Messaging, and Test, as shown in the following diagram.</p>
-<div class="figure"><a name="d5e200" href="#d5e200"></a><p class="title"><b>Figure&nbsp;2.1.&nbsp;Overview of the Spring Framework</b></p><div class="figure-contents">
-
-<div class="mediaobject"><img src="images/spring-overview.png" alt="spring overview"></div>
-</div></div><br class="figure-break">
-<p>The following sections list the available modules for each feature along with their
-artifact names and the topics they cover. Artifact names correlate to <span class="emphasis"><em>artifact IDs</em></span> used
-in <a class="link" href="overview.html#dependency-management" title="2.3.1&nbsp;Dependency Management and Naming Conventions">Dependency Management tools</a>.</p>
-<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="overview-core-container" href="#overview-core-container"></a>2.2.1&nbsp;Core Container</h3></div></div></div>
-
-<p>The <a class="link" href="beans.html#beans-introduction" title="7.1&nbsp;Introduction to the Spring IoC container and beans"><span class="emphasis"><em>Core Container</em></span></a> consists of the <code class="literal">spring-core</code>,
-<code class="literal">spring-beans</code>, <code class="literal">spring-context</code>, <code class="literal">spring-context-support</code>, and <code class="literal">spring-expression</code>
-(Spring Expression Language) modules.</p>
-<p>The <code class="literal">spring-core</code> and <code class="literal">spring-beans</code> modules <a class="link" href="beans.html#beans-introduction" title="7.1&nbsp;Introduction to the Spring IoC container and beans">provide the fundamental
-parts of the framework</a>, including the IoC and Dependency Injection features. The
-<code class="literal">BeanFactory</code> is a sophisticated implementation of the factory pattern. It removes the
-need for programmatic singletons and allows you to decouple the configuration and
-specification of dependencies from your actual program logic.</p>
-<p>The <a class="link" href="beans.html#context-introduction" title="7.15&nbsp;Additional Capabilities of the ApplicationContext"><span class="emphasis"><em>Context</em></span></a> (<code class="literal">spring-context</code>) module builds on the solid
-base provided by the <a class="link" href="beans.html#beans-introduction" title="7.1&nbsp;Introduction to the Spring IoC container and beans"><span class="emphasis"><em>Core and Beans</em></span></a> modules: it is a means to
-access objects in a framework-style manner that is similar to a JNDI registry. The
-Context module inherits its features from the Beans module and adds support for
-internationalization (using, for example, resource bundles), event propagation, resource
-loading, and the transparent creation of contexts by, for example, a Servlet container.
-The Context module also supports Java EE features such as EJB, JMX, and basic remoting.
-The <code class="literal">ApplicationContext</code> interface is the focal point of the Context module.
-<code class="literal">spring-context-support</code> provides support for integrating common third-party libraries
-into a Spring application context for caching (EhCache, Guava, JCache), mailing
-(JavaMail), scheduling (CommonJ, Quartz) and template engines (FreeMarker, JasperReports,
-Velocity).</p>
-<p>The <code class="literal">spring-expression</code> module provides a powerful <a class="link" href="expressions.html" title="10.&nbsp;Spring Expression Language (SpEL)"><span class="emphasis"><em>Expression
-Language</em></span></a> for querying and manipulating an object graph at runtime. It is an extension
-of the unified expression language (unified EL) as specified in the JSP 2.1
-specification. The language supports setting and getting property values, property
-assignment, method invocation, accessing the content of arrays, collections and indexers,
-logical and arithmetic operators, named variables, and retrieval of objects by name from
-Spring&#8217;s IoC container. It also supports list projection and selection as well as common
-list aggregations.</p>
-</div>
-<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="overview-aop-instrumentation" href="#overview-aop-instrumentation"></a>2.2.2&nbsp;AOP and Instrumentation</h3></div></div></div>
-
-<p>The <code class="literal">spring-aop</code> module provides an <a class="link" href="aop.html#aop-introduction" title="11.1&nbsp;Introduction"><span class="emphasis"><em>AOP</em></span></a> Alliance-compliant
-aspect-oriented programming implementation allowing you to define, for example,
-method interceptors and pointcuts to cleanly decouple code that implements functionality
-that should be separated. Using source-level metadata functionality, you can also
-incorporate behavioral information into your code, in a manner similar to that of .NET
-attributes.</p>
-<p>The separate <code class="literal">spring-aspects</code> module provides integration with AspectJ.</p>
-<p>The <code class="literal">spring-instrument</code> module provides class instrumentation support and classloader
-implementations to be used in certain application servers. The <code class="literal">spring-instrument-tomcat</code>
-module contains Spring&#8217;s instrumentation agent for Tomcat.</p>
-</div>
-<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="overview-messaging" href="#overview-messaging"></a>2.2.3&nbsp;Messaging</h3></div></div></div>
-
-<p>Spring Framework 4 includes a <code class="literal">spring-messaging</code> module with key abstractions from the
-<span class="emphasis"><em>Spring Integration</em></span> project such as <code class="literal">Message</code>, <code class="literal">MessageChannel</code>, <code class="literal">MessageHandler</code>, and
-others to serve as a foundation for messaging-based applications. The module also
-includes a set of annotations for mapping messages to methods, similar to the Spring MVC
-annotation based programming model.</p>
-</div>
-<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="overview-data-access" href="#overview-data-access"></a>2.2.4&nbsp;Data Access/Integration</h3></div></div></div>
-
-<p>The <span class="emphasis"><em>Data Access/Integration</em></span> layer consists of the JDBC, ORM, OXM, JMS, and
-Transaction modules.</p>
-<p>The <code class="literal">spring-jdbc</code> module provides a <a class="link" href="jdbc.html#jdbc-introduction" title="19.1&nbsp;Introduction to Spring Framework JDBC">JDBC</a>-abstraction layer that
-removes the need to do tedious JDBC coding and parsing of database-vendor specific error
-codes.</p>
-<p>The <code class="literal">spring-tx</code> module supports <a class="link" href="transaction.html" title="17.&nbsp;Transaction Management">programmatic and declarative transaction</a>
-management for classes that implement special interfaces and for <span class="emphasis"><em>all your POJOs (Plain
-Old Java Objects)</em></span>.</p>
-<p>The <code class="literal">spring-orm</code> module provides integration layers for popular
-<a class="link" href="orm.html#orm-introduction" title="20.1&nbsp;Introduction to ORM with Spring">object-relational mapping</a> APIs, including <a class="link" href="orm.html#orm-jpa" title="20.5&nbsp;JPA">JPA</a>,
-<a class="link" href="orm.html#orm-jdo" title="20.4&nbsp;JDO">JDO</a>, and <a class="link" href="orm.html#orm-hibernate" title="20.3&nbsp;Hibernate">Hibernate</a>. Using the <code class="literal">spring-orm</code> module you can
-use all of these O/R-mapping frameworks in combination with all of the other features
-Spring offers, such as the simple declarative transaction management feature mentioned
-previously.</p>
-<p>The <code class="literal">spring-oxm</code> module provides an abstraction layer that supports <a class="link" href="oxm.html" title="21.&nbsp;Marshalling XML using O/X Mappers">Object/XML
-mapping</a> implementations such as JAXB, Castor, XMLBeans, JiBX and XStream.</p>
-<p>The <code class="literal">spring-jms</code> module (<a class="link" href="jms.html" title="30.&nbsp;JMS (Java Message Service)">Java Messaging Service</a>) contains features for producing and
-consuming messages. Since Spring Framework 4.1, it provides integration with the
-<code class="literal">spring-messaging</code> module.</p>
-</div>
-<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="overview-web" href="#overview-web"></a>2.2.5&nbsp;Web</h3></div></div></div>
-
-<p>The <span class="emphasis"><em>Web</em></span> layer consists of the <code class="literal">spring-web</code>, <code class="literal">spring-webmvc</code>, <code class="literal">spring-websocket</code>, and
-<code class="literal">spring-webmvc-portlet</code> modules.</p>
-<p>The <code class="literal">spring-web</code> module provides basic web-oriented integration features such as
-multipart file upload functionality and the initialization of the IoC container using
-Servlet listeners and a web-oriented application context. It also contains an HTTP client
-and the web-related parts of Spring&#8217;s remoting support.</p>
-<p>The <code class="literal">spring-webmvc</code> module (also known as the <span class="emphasis"><em>Web-Servlet</em></span> module) contains Spring&#8217;s
-model-view-controller (<a class="link" href="mvc.html#mvc-introduction" title="22.1&nbsp;Introduction to Spring Web MVC framework"><span class="emphasis"><em>MVC</em></span></a>) and REST Web Services implementation
-for web applications. Spring&#8217;s MVC framework provides a clean separation between domain
-model code and web forms and integrates with all of the other features of the Spring
-Framework.</p>
-<p>The <code class="literal">spring-webmvc-portlet</code> module (also known as the <span class="emphasis"><em>Web-Portlet</em></span> module) provides
-the MVC implementation to be used in a Portlet environment and mirrors the functionality
-of the <code class="literal">spring-webmvc</code> module.</p>
-</div>
-<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="overview-testing" href="#overview-testing"></a>2.2.6&nbsp;Test</h3></div></div></div>
-
-<p>The <code class="literal">spring-test</code> module supports the <a class="link" href="unit-testing.html" title="14.&nbsp;Unit Testing">unit testing</a> and
-<a class="link" href="integration-testing.html" title="15.&nbsp;Integration Testing">integration testing</a> of Spring components with JUnit or TestNG. It
-provides consistent <a class="link" href="integration-testing.html#testcontext-ctx-management" title="15.5.4&nbsp;Context management">loading</a> of Spring
-<code class="literal">ApplicationContext</code>s and <a class="link" href="integration-testing.html#testcontext-ctx-management-caching" title="Context caching">caching</a> of those
-contexts. It also provides <a class="link" href="unit-testing.html#mock-objects" title="14.1&nbsp;Mock Objects">mock objects</a> that you can use to test your
-code in isolation.</p>
-</div>
-</div>
-<div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="overview-usagescenarios" href="#overview-usagescenarios"></a>2.3&nbsp;Usage scenarios</h2></div></div></div>
-
-<p>The building blocks described previously make Spring a logical choice in many scenarios,
-from embedded applications that run on resource-constrained devices to full-fledged
-enterprise applications that use Spring&#8217;s transaction management functionality and web
-framework integration.</p>
-<div class="figure"><a name="d5e313" href="#d5e313"></a><p class="title"><b>Figure&nbsp;2.2.&nbsp;Typical full-fledged Spring web application</b></p><div class="figure-contents">
-
-<div class="mediaobject"><img src="images/overview-full.png" alt="overview full"></div>
-</div></div><br class="figure-break">
-<p>Spring&#8217;s <a class="link" href="transaction.html#transaction-declarative" title="17.5&nbsp;Declarative transaction management">declarative transaction management features</a> make
-the web application fully transactional, just as it would be if you used EJB
-container-managed transactions. All your custom business logic can be implemented with
-simple POJOs and managed by Spring&#8217;s IoC container. Additional services include support
-for sending email and validation that is independent of the web layer, which lets you
-choose where to execute validation rules. Spring&#8217;s ORM support is integrated with JPA,
-Hibernate and JDO; for example, when using Hibernate, you can continue to use
-your existing mapping files and standard Hibernate <code class="literal">SessionFactory</code> configuration. Form
-controllers seamlessly integrate the web-layer with the domain model, removing the need
-for <code class="literal">ActionForms</code> or other classes that transform HTTP parameters to values for your
-domain model.</p>
-<div class="figure"><a name="d5e324" href="#d5e324"></a><p class="title"><b>Figure&nbsp;2.3.&nbsp;Spring middle-tier using a third-party web framework</b></p><div class="figure-contents">
-
-<div class="mediaobject"><img src="images/overview-thirdparty-web.png" alt="overview thirdparty web"></div>
-</div></div><br class="figure-break">
-<p>Sometimes circumstances do not allow you to completely switch to a different framework.
-The Spring Framework does <span class="emphasis"><em>not</em></span> force you to use everything within it; it is not an
-<span class="emphasis"><em>all-or-nothing</em></span> solution. Existing front-ends built with Struts, Tapestry, JSF
-or other UI frameworks can be integrated with a Spring-based middle-tier, which allows
-you to use Spring transaction features. You simply need to wire up your business logic
-using an <code class="literal">ApplicationContext</code> and use a <code class="literal">WebApplicationContext</code> to integrate your web
-layer.</p>
-<div class="figure"><a name="d5e336" href="#d5e336"></a><p class="title"><b>Figure&nbsp;2.4.&nbsp;Remoting usage scenario</b></p><div class="figure-contents">
-
-<div class="mediaobject"><img src="images/overview-remoting.png" alt="overview remoting"></div>
-</div></div><br class="figure-break">
-<p>When you need to access existing code through web services, you can use Spring&#8217;s
-<code class="literal">Hessian-</code>, <code class="literal">Burlap-</code>, <code class="literal">Rmi-</code> or <code class="literal">JaxRpcProxyFactory</code> classes. Enabling remote access to
-existing applications is not difficult.</p>
-<div class="figure"><a name="d5e348" href="#d5e348"></a><p class="title"><b>Figure&nbsp;2.5.&nbsp;EJBs - Wrapping existing POJOs</b></p><div class="figure-contents">
-
-<div class="mediaobject"><img src="images/overview-ejb.png" alt="overview ejb"></div>
-</div></div><br class="figure-break">
-<p>The Spring Framework also provides an <a class="link" href="ejb.html" title="29.&nbsp;Enterprise JavaBeans (EJB) integration">access and abstraction layer</a> for
-Enterprise JavaBeans, enabling you to reuse your existing POJOs and wrap them in
-stateless session beans for use in scalable, fail-safe web applications that might need
-declarative security.</p>
-<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="dependency-management" href="#dependency-management"></a>2.3.1&nbsp;Dependency Management and Naming Conventions</h3></div></div></div>
-
-<p>Dependency management and dependency injection are different things. To get those nice
-features of Spring into your application (like dependency injection) you need to
-assemble all the libraries needed (jar files) and get them onto your classpath at
-runtime, and possibly at compile time. These dependencies are not virtual components
-that are injected, but physical resources in a file system (typically). The process of
-dependency management involves locating those resources, storing them and adding them to
-classpaths. Dependencies can be direct (e.g. my application depends on Spring at
-runtime), or indirect (e.g. my application depends on <code class="literal">commons-dbcp</code> which depends on
-<code class="literal">commons-pool</code>). The indirect dependencies are also known as "transitive" and it is
-those dependencies that are hardest to identify and manage.</p>
-<p>If you are going to use Spring you need to get a copy of the jar libraries that comprise
-the pieces of Spring that you need. To make this easier Spring is packaged as a set of
-modules that separate the dependencies as much as possible, so for example if you don&#8217;t
-want to write a web application you don&#8217;t need the spring-web modules. To refer to
-Spring library modules in this guide we use a shorthand naming convention <code class="literal">spring-*</code> or
-<code class="literal">spring-*.jar,</code> where <code class="literal">*</code> represents the short name for the module
-(e.g. <code class="literal">spring-core</code>, <code class="literal">spring-webmvc</code>, <code class="literal">spring-jms</code>, etc.). The actual jar file name that
-you use is normally the module name concatenated with the version number
-(e.g. <span class="emphasis"><em>spring-core-4.3.1.RELEASE.jar</em></span>).</p>
-<p>Each release of the Spring Framework will publish artifacts to the following places:</p>
-<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
-Maven Central, which is the default repository that Maven queries, and does not
-require any special configuration to use. Many of the common libraries that Spring
-depends on also are available from Maven Central and a large section of the Spring
-community uses Maven for dependency management, so this is convenient for them. The
-names of the jars here are in the form <code class="literal">spring-*-&lt;version&gt;.jar</code> and the Maven groupId
-is <code class="literal">org.springframework</code>.
-</li><li class="listitem">
-In a public Maven repository hosted specifically for Spring. In addition to the final
-GA releases, this repository also hosts development snapshots and milestones. The jar
-file names are in the same form as Maven Central, so this is a useful place to get
-development versions of Spring to use with other libraries deployed in Maven Central.
-This repository also contains a bundle distribution zip file that contains all Spring
-jars  bundled together for easy download.
-</li></ul></div>
-<p>So the first thing you need to decide is how to manage your dependencies: we generally
-recommend the use of an automated system like Maven, Gradle or Ivy, but you can also do
-it manually by downloading all the jars yourself.</p>
-<p>You will find bellow the list of Spring artifacts. For a more complete description of each
-modules, see <a class="xref" href="overview.html#overview-modules" title="2.2&nbsp;Modules">Section&nbsp;2.2, &#8220;Modules&#8221;</a>.</p>
-<div class="table"><a name="d5e381" href="#d5e381"></a><p class="title"><b>Table&nbsp;2.1.&nbsp;Spring Framework Artifacts</b></p><div class="table-contents">
-
-<table summary="Spring Framework Artifacts" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col class="col_1"><col class="col_2"><col class="col_3"></colgroup><thead><tr><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">GroupId</th><th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">ArtifactId</th><th style="border-bottom: 0.5pt solid ; " align="left" valign="top">Description</th></tr></thead><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-aop</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Proxy-based AOP support</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-aspects</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>AspectJ based aspects</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-beans</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Beans support, including Groovy</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-context</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Application context runtime, including scheduling and remoting abstractions</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-context-support</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Support classes for integrating common third-party libraries into a Spring application context</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-core</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Core utilities, used by many other Spring modules</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-expression</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Spring Expression Language (SpEL)</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-instrument</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Instrumentation agent for JVM bootstrapping</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-instrument-tomcat</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Instrumentation agent for Tomcat</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-jdbc</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>JDBC support package, including DataSource setup and JDBC access support</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-jms</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>JMS support package, including helper classes to send and receive JMS messages</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-messaging</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Support for messaging architectures and protocols</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-orm</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Object/Relational Mapping, including JPA and Hibernate support</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-oxm</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Object/XML Mapping</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-test</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Support for unit testing and integration testing Spring components</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-tx</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Transaction infrastructure, including DAO support and JCA integration</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-web</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>Web support packages, including client and web remoting</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-webmvc</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>REST Web Services and model-view-controller implementation for web applications</p></td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top"><p>spring-webmvc-portlet</p></td><td style="border-bottom: 0.5pt solid ; " align="left" valign="top"><p>MVC implementation to be used in a Portlet environment</p></td></tr><tr><td style="border-right: 0.5pt solid ; " align="left" valign="top"><p>org.springframework</p></td><td style="border-right: 0.5pt solid ; " align="left" valign="top"><p>spring-websocket</p></td><td style="" align="left" valign="top"><p>WebSocket and SockJS implementations, including STOMP support</p></td></tr></tbody></table>
-</div></div><br class="table-break">
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-spring-dependencies" href="#overview-spring-dependencies"></a>Spring Dependencies and Depending on Spring</h4></div></div></div>
-
-<p>Although Spring provides integration and support for a huge range of enterprise and
-other external tools, it intentionally keeps its mandatory dependencies to an absolute
-minimum: you shouldn&#8217;t have to locate and download (even automatically) a large number
-of jar libraries in order to use Spring for simple use cases. For basic dependency
-injection there is only one mandatory external dependency, and that is for logging (see
-below for a more detailed description of logging options).</p>
-<p>Next we outline the basic steps needed to configure an application that depends on
-Spring, first with Maven and then with Gradle and finally using Ivy. In all cases, if
-anything is unclear, refer to the documentation of your dependency management system, or
-look at some sample code - Spring itself uses Gradle to manage dependencies when it is
-building, and our samples mostly use Gradle or Maven.</p>
-</div>
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-maven-dependency-management" href="#overview-maven-dependency-management"></a>Maven Dependency Management</h4></div></div></div>
-
-<p>If you are using <a class="ulink" href="http://maven.apache.org/" target="_top">Maven</a> for dependency management you don&#8217;t even
-need to supply the logging dependency explicitly. For example, to create an application
-context and use dependency injection to configure an application, your Maven dependencies
-will look like this:</p>
-<pre class="programlisting"><span class="hl-tag">&lt;dependencies&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.springframework<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>spring-context<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>4.3.1.RELEASE<span class="hl-tag">&lt;/version&gt;</span>
-        <span class="hl-tag">&lt;scope&gt;</span>runtime<span class="hl-tag">&lt;/scope&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-<span class="hl-tag">&lt;/dependencies&gt;</span></pre>
-<p>That&#8217;s it. Note the scope can be declared as runtime if you don&#8217;t need to compile
-against Spring APIs, which is typically the case for basic dependency injection use
-cases.</p>
-<p>The example above works with the Maven Central repository. To use the Spring Maven
-repository (e.g. for milestones or developer snapshots), you need to specify the
-repository location in your Maven configuration. For full releases:</p>
-<pre class="programlisting"><span class="hl-tag">&lt;repositories&gt;</span>
-    <span class="hl-tag">&lt;repository&gt;</span>
-        <span class="hl-tag">&lt;id&gt;</span>io.spring.repo.maven.release<span class="hl-tag">&lt;/id&gt;</span>
-        <span class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/release/<span class="hl-tag">&lt;/url&gt;</span>
-        <span class="hl-tag">&lt;snapshots&gt;</span><span class="hl-tag">&lt;enabled&gt;</span>false<span class="hl-tag">&lt;/enabled&gt;</span><span class="hl-tag">&lt;/snapshots&gt;</span>
-    <span class="hl-tag">&lt;/repository&gt;</span>
-<span class="hl-tag">&lt;/repositories&gt;</span></pre>
-<p>For milestones:</p>
-<pre class="programlisting"><span class="hl-tag">&lt;repositories&gt;</span>
-    <span class="hl-tag">&lt;repository&gt;</span>
-        <span class="hl-tag">&lt;id&gt;</span>io.spring.repo.maven.milestone<span class="hl-tag">&lt;/id&gt;</span>
-        <span class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/milestone/<span class="hl-tag">&lt;/url&gt;</span>
-        <span class="hl-tag">&lt;snapshots&gt;</span><span class="hl-tag">&lt;enabled&gt;</span>false<span class="hl-tag">&lt;/enabled&gt;</span><span class="hl-tag">&lt;/snapshots&gt;</span>
-    <span class="hl-tag">&lt;/repository&gt;</span>
-<span class="hl-tag">&lt;/repositories&gt;</span></pre>
-<p>And for snapshots:</p>
-<pre class="programlisting"><span class="hl-tag">&lt;repositories&gt;</span>
-    <span class="hl-tag">&lt;repository&gt;</span>
-        <span class="hl-tag">&lt;id&gt;</span>io.spring.repo.maven.snapshot<span class="hl-tag">&lt;/id&gt;</span>
-        <span class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/snapshot/<span class="hl-tag">&lt;/url&gt;</span>
-        <span class="hl-tag">&lt;snapshots&gt;</span><span class="hl-tag">&lt;enabled&gt;</span>true<span class="hl-tag">&lt;/enabled&gt;</span><span class="hl-tag">&lt;/snapshots&gt;</span>
-    <span class="hl-tag">&lt;/repository&gt;</span>
-<span class="hl-tag">&lt;/repositories&gt;</span></pre>
-</div>
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-maven-bom" href="#overview-maven-bom"></a>Maven "Bill Of Materials" Dependency</h4></div></div></div>
-
-<p>It is possible to accidentally mix different versions of Spring JARs when using Maven.
-For example, you may find that a third-party library, or another Spring project,
-pulls in a transitive dependency to an older release. If you forget to explicitly declare
-a direct dependency yourself, all sorts of unexpected issues can arise.</p>
-<p>To overcome such problems Maven supports the concept of a "bill of materials" (BOM)
-dependency. You can import the <code class="literal">spring-framework-bom</code> in your <code class="literal">dependencyManagement</code>
-section to ensure that all spring dependencies (both direct and transitive) are at
-the same version.</p>
-<pre class="programlisting"><span class="hl-tag">&lt;dependencyManagement&gt;</span>
-    <span class="hl-tag">&lt;dependencies&gt;</span>
-        <span class="hl-tag">&lt;dependency&gt;</span>
-            <span class="hl-tag">&lt;groupId&gt;</span>org.springframework<span class="hl-tag">&lt;/groupId&gt;</span>
-            <span class="hl-tag">&lt;artifactId&gt;</span>spring-framework-bom<span class="hl-tag">&lt;/artifactId&gt;</span>
-            <span class="hl-tag">&lt;version&gt;</span>4.3.1.RELEASE<span class="hl-tag">&lt;/version&gt;</span>
-            <span class="hl-tag">&lt;type&gt;</span>pom<span class="hl-tag">&lt;/type&gt;</span>
-            <span class="hl-tag">&lt;scope&gt;</span>import<span class="hl-tag">&lt;/scope&gt;</span>
-        <span class="hl-tag">&lt;/dependency&gt;</span>
-    <span class="hl-tag">&lt;/dependencies&gt;</span>
-<span class="hl-tag">&lt;/dependencyManagement&gt;</span></pre>
-<p>An added benefit of using the BOM is that you no longer need to specify the <code class="literal">&lt;version&gt;</code>
-attribute when depending on Spring Framework artifacts:</p>
-<pre class="programlisting"><span class="hl-tag">&lt;dependencies&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.springframework<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>spring-context<span class="hl-tag">&lt;/artifactId&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.springframework<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>spring-web<span class="hl-tag">&lt;/artifactId&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-<span class="hl-tag">&lt;dependencies&gt;</span></pre>
-</div>
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-gradle-dependency-management" href="#overview-gradle-dependency-management"></a>Gradle Dependency Management</h4></div></div></div>
-
-<p>To use the Spring repository with the <a class="ulink" href="http://www.gradle.org/" target="_top">Gradle</a> build system,
-include the appropriate URL in the <code class="literal">repositories</code> section:</p>
-<pre class="programlisting">repositories {
-    mavenCentral()
-    <span class="hl-comment">// and optionally...</span>
-    maven { url <span class="hl-string">"http://repo.spring.io/release"</span> }
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF" style="position: relative; min-height: 100%; top: 40px;">
+    <div class="navheader">
+        <table width="100%" summary="Navigation header">
+            <tbody>
+                <tr>
+                    <th colspan="3" align="center">
+                        <font>
+                            <font>2.介绍Spring框架</font>
+                        </font>
+                    </th>
+                </tr>
+                <tr>
+                    <td width="20%" align="left">
+                        <a accesskey="p" href="overview-getting-started-with-spring.html">
+                            <font>
+                                <font>上一页</font>
+                            </font>
+                        </a>&nbsp;</td>
+                    <th width="60%" align="center">
+                        <font>
+                            <font>第一部分. Spring框架的概述</font>
+                        </font>
+                    </th>
+                    <td width="20%" align="right">&nbsp;
+                        <a accesskey="n" href="spring-whats-new.html">
+                            <font>
+                                <font>下一个</font>
+                            </font>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+    <div class="chapter">
+        <div class="titlepage">
+            <div>
+                <div>
+                    <h2 class="title"><a name="overview" href="#overview"></a><font><font>2. Spring框架介绍</font></font></h2></div>
+            </div>
+        </div>
+        <p>
+            <font>
+                <font>Spring Framework是一个Java平台，它为开发Java应用程序提供全面的基础架构支持。</font>
+                <font>Spring框架基础架构，因此您可以专注于您的应用程序。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>Spring可以从“普通Java对象”（POJO）中构建应用程序和非侵入性的企业应用服务的POJO。</font>
+                <font>此功能适用于Java SE的编程模型，并全额和部分的Java EE。</font>
+            </font>
+        </p>
+        <p>
+            <font>
+                <font>作为一个应用程序开发人员，可以从Spring平台中受益的例子：</font>
+            </font>
+        </p>
+        <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+                <li class="listitem">
+                    <font>
+                        <font>
+                            做一个Java方法在一个数据库事务中执行，而不必处理事务API。
+                        </font>
+                    </font>
+                </li>
+                <li class="listitem">
+                    <font>
+                        <font>
+                            做一个本地Java方法的远程过程无需处理与远程的API。
+                        </font>
+                    </font>
+                </li>
+                <li class="listitem">
+                    <font>
+                        <font>
+                            做一个本地Java方法的管理操作，而不必处理JMX API的。
+                        </font>
+                    </font>
+                </li>
+                <li class="listitem">
+                    <font>
+                        <font>
+                            做一个本地Java方法的消息处理程序，而无需处理JMS的API。
+                        </font>
+                    </font>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="titlepage">
+                <div>
+                    <div>
+                        <h2 class="title" style="clear: both"><a name="overview-dependency-injection" href="#overview-dependency-injection"></a><font><font>2.1依赖注入和控制反转</font></font></h2></div>
+                </div>
+            </div>
+            <p>
+                <font>
+                    <font>Java应用程序-运行距离的限制，嵌入式应用到n层的色域宽松来看，服务器端的企业级应用-通常由该协作，形成适当的应用对象。</font>
+                    <font>因此，在一个应用程序中的对象都</font>
+                </font><span class="emphasis"><em><font><font>依赖</font></font></em></span>
+                <font>
+                    <font>于对方。</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>尽管Java平台提供了丰富的应用程序开发功能，它缺乏手段的基本构建块组织成一个连贯的整体，使得这项任务架构师和开发人员。</font>
+                    <font>虽然你可以使用设计模式，如</font>
+                </font><span class="emphasis"><em><font><font>工厂</font></font></em></span>
+                <font>
+                    <font>，</font>
+                </font><span class="emphasis"><em><font><font>抽象工厂</font></font></em></span>
+                <font>
+                    <font>，</font>
+                </font><span class="emphasis"><em><font><font>生成器</font></font></em></span>
+                <font>
+                    <font>，</font>
+                </font><span class="emphasis"><em><font><font>装饰</font></font></em></span>
+                <font>
+                    <font>和</font>
+                </font><span class="emphasis"><em><font><font>服务定位器</font></font></em></span>
+                <font>
+                    <font>
+                        组成的各种类和对象实例，使一个应用程序，这些模式都简单地认为：给定一个名称的最佳做法，用一个描述图案做什么，在哪里应用它，它解决的问题，等等。</font>
+                    <font>模式是形式化的最佳做法，</font>
+                </font><span class="emphasis"><em><font><font>您必须实现自己</font></font></em></span>
+                <font>
+                    <font>的应用程序。</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>Spring框架</font>
+                </font><span class="emphasis"><em><font><font>控制反转</font></font></em></span>
+                <font>
+                    <font>（IOC）成分的地址通过提供不同的组成成分为准备使用一个完全工作的应用程序的形式化手段这一问题。</font>
+                    <font>Spring框架编纂正式的设计模式为可以集成到自己的应用程序（S）第一类对象。</font>
+                    <font>许多组织和机构使用Spring框架，以这种方式来设计健壮，</font>
+                </font><span class="emphasis"><em><font><font>可维护的</font></font></em></span>
+                <font>
+                    <font>应用程序。</font>
+                </font>
+            </p>
+            <div class="sidebar">
+                <a name="background-ioc" href="#background-ioc"></a>
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <p class="title"><b><font><font>背景</font></font></b></p>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>“ </font>
+                    </font><span class="emphasis"><em><font><font>现在的问题是，什么方面的控制是（他们）反转？</font></font></em></span>
+                    <font>
+                        <font> ” </font>
+                        <font>Martin Fowler的提出有关控制反转（IOC）这个问题
+                        </font>
+                    </font>
+                    <a class="ulink" href="http://martinfowler.com/articles/injection.html" target="_top">
+                        <font>
+                            <font>上他的网站</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>在2004年福勒建议重命名原则，使之更加不言自明的，并想出了</font>
+                    </font><span class="emphasis"><em><font><font>依赖注入</font></font></em></span>
+                    <font>
+                        <font>。</font>
+                    </font>
+                </p>
+            </div>
+        </div>
+        <div class="section">
+            <div class="titlepage">
+                <div>
+                    <div>
+                        <h2 class="title" style="clear: both"><a name="overview-modules" href="#overview-modules"></a><font><font>2.2模块</font></font></h2></div>
+                </div>
+            </div>
+            <p>
+                <font>
+                    <font>Spring框架包括组织成约20个模块的功能。</font>
+                    <font>这些模块分为核心容器，数据访问/集成，Web，AOP（面向方面​​编程），仪器仪表，通讯和测试，如下面的图所示。</font>
+                </font>
+            </p>
+            <div class="figure">
+                <a name="d5e200" href="#d5e200"></a>
+                <p class="title"><b><font><font>图2.1。</font><font>Spring框架概述</font></font></b></p>
+                <div class="figure-contents">
+                    <div class="mediaobject"><img src="images/spring-overview.png" alt="春天概述"></div>
+                </div>
+            </div>
+            <br class="figure-break">
+            <p>
+                <font>
+                    <font>以下部分列出了每个可用模块，以及它们神器的名字和它们覆盖的主题功能一起。</font>
+                    <font>神器的名字关联到</font>
+                </font><span class="emphasis"><em><font><font>神器的ID</font></font></em></span>
+                <font>
+                    <font>中使用的</font>
+                </font>
+                <a class="link" href="overview.html#dependency-management" title="2.3.1依赖管理和命名约定">
+                    <font>
+                        <font>依赖管理工具</font>
+                    </font>
+                </a>
+                <font>
+                    <font>。</font>
+                </font>
+            </p>
+            <div class="section">
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <h3 class="title"><a name="overview-core-container" href="#overview-core-container"></a><font><font>2.2.1核心容器</font></font></h3></div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><a class="link" href="beans.html#beans-introduction" title="7.1简介Spring IoC容器和豆类"><span class="emphasis"><em><font><font>核心容器</font></font></em></span></a>
+                    <font>
+                        <font>包含的</font>
+                    </font><code class="literal"><font><font>弹簧核心</font></font></code>
+                    <font>
+                        <font>，
+                        </font>
+                    </font><code class="literal"><font><font>弹簧豆</font></font></code>
+                    <font>
+                        <font>，</font>
+                    </font><code class="literal"><font><font>春天背景</font></font></code>
+                    <font>
+                        <font>，</font>
+                    </font><code class="literal"><font><font>弹簧上下文的支持</font></font></code>
+                    <font>
+                        <font>和</font>
+                    </font><code class="literal"><font><font>弹簧式</font></font></code>
+                    <font>
+                        <font>
+                            （春季表达式语言）模块。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧核心</font></font></code>
+                    <font>
+                        <font>和</font>
+                    </font><code class="literal"><font><font>弹簧豆</font></font></code>
+                    <font>
+                        <font>模块</font>
+                    </font>
+                    <a class="link" href="beans.html#beans-introduction" title="7.1简介Spring IoC容器和豆类">
+                        <font>
+                            <font>提供框架的基本组成部分</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>，其中包括国际奥委会和依赖注入特性。</font>
+                        <font>该
+                        </font>
+                    </font><code class="literal"><font><font>Bean工厂</font></font></code>
+                    <font>
+                        <font>是一个复杂的实现工厂模式。</font>
+                        <font>它消除了对程序性单的需要，并允许你从程序逻辑中分离出依赖关系的配置和规格。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>的</font>
+                    </font><a class="link" href="beans.html#context-introduction" title="7.15的ApplicationContext的附加功能"><span class="emphasis"><em><font><font>背景信息</font></font></em></span></a>
+                    <font>
+                        <font>（</font>
+                    </font><code class="literal"><font><font>弹簧上下文</font></font></code>
+                    <font>
+                        <font>）模块建立由设置在固体基础上</font>
+                    </font><a class="link" href="beans.html#beans-introduction" title="7.1简介Spring IoC容器和豆类"><span class="emphasis"><em><font><font>核和豆</font></font></em></span></a>
+                    <font>
+                        <font>模块：它是访问一个框架式方式是类似于一个JNDI注册表对象的装置。</font>
+                        <font>上下文模块从豆类模块继承其功能，并增加了对国际化（使用，例如，资源包），事件传播，资源加载，并通过透明创建上下文，例如，一个Servlet容器。</font>
+                        <font>上下文模块还支持Java EE的功能，如EJB，JMX和基础的远程处理。</font>
+                        <font class="">该</font>
+                    </font><code class="literal"><font><font class="">ApplicationContext的</font></font></code>
+                    <font>
+                        <font class="">界面是上下文模块的焦点。
+                        </font>
+                    </font><code class="literal"><font><font class="">弹簧上下文的支持</font></font></code>
+                    <font>
+                        <font class="">提供了支持常见的第三方库集成到Spring应用程序上下文缓存（的Ehcache，番石榴，的JCache），邮寄（JavaMail的），调度（CommonJ，石英）和模板引擎（FreeMarker的，JasperReports的，速度）。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧表达</font></font></code>
+                    <font>
+                        <font>模块提供了一个功能强大的</font>
+                    </font><a class="link" href="expressions.html" title="10.春表达式语言（规划环境地政司）"><span class="emphasis"><em><font><font>表达式语言</font></font></em></span></a>
+                    <font>
+                        <font>查询和在运行时操作的对象图。</font>
+                        <font>这是因为在JSP 2.1规范中规定的统一表达式语言（EL统一）的扩展。</font>
+                        <font>该语言支持设置和获取属性值，属性赋值，方法调用，访问数组，集合和索引器，逻辑和算术运算符，命名变量和对象检索名字从Spring的IoC容器的内容。</font>
+                        <font>它还支持列表投影和选择以及共同列表聚合。</font>
+                    </font>
+                </p>
+            </div>
+            <div class="section">
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <h3 class="title"><a name="overview-aop-instrumentation" href="#overview-aop-instrumentation"></a><font><font>2.2.2 AOP和仪器</font></font></h3></div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧AOP</font></font></code>
+                    <font>
+                        <font>模块提供了一个</font>
+                    </font><a class="link" href="aop.html#aop-introduction" title="11.1简介"><span class="emphasis"><em><font><font>AOP</font></font></em></span></a>
+                    <font>
+                        <font>联盟的兼容面向方面编程实现，允许你定义，例如，方法拦截器和切入点干净分离实现的功能，应该分开的代码。</font>
+                        <font>使用源码级的元数据功能，还可以将行为信息合并到你的代码，在类似.NET属性的方式。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>独立</font>
+                    </font><code class="literal"><font><font>弹簧方面</font></font></code>
+                    <font>
+                        <font>模块提供与AspectJ的整合。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧仪器</font></font></code>
+                    <font>
+                        <font>模块提供一流的仪器支持和类加载器的实现在某些应用服务器中使用。</font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧仪器tomcat的</font></font></code>
+                    <font>
+                        <font>
+                            模块包含Spring对Tomcat的仪器代理。</font>
+                    </font>
+                </p>
+            </div>
+            <div class="section">
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <h3 class="title"><a name="overview-messaging" href="#overview-messaging"></a><font><font>2.2.3消息</font></font></h3></div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>Spring框架4包括</font>
+                    </font><code class="literal"><font><font>弹簧消息</font></font></code>
+                    <font>
+                        <font>从关键抽象模块
+                        </font>
+                    </font><span class="emphasis"><em><font><font>Spring集成</font></font></em></span>
+                    <font>
+                        <font>项目，如</font>
+                    </font><code class="literal"><font><font>信息</font></font></code>
+                    <font>
+                        <font>，</font>
+                    </font><code class="literal"><font><font>MessageChannel</font></font></code>
+                    <font>
+                        <font>，</font>
+                    </font><code class="literal"><font><font>的MessageHandler</font></font></code>
+                    <font>
+                        <font>，和其他人作为基于消息的应用奠定了基础。</font>
+                        <font>该模块还包括一组注解映射消息的方法，类似Spring MVC的基于注解的编程模型。</font>
+                    </font>
+                </p>
+            </div>
+            <div class="section">
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <h3 class="title"><a name="overview-data-access" href="#overview-data-access"></a><font><font>2.2.4数据访问/集成</font></font></h3></div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><span class="emphasis"><em><font><font>数据访问/集成</font></font></em></span>
+                    <font>
+                        <font>层由JDBC，ORM，OXM，JMS和交易模块。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧JDBC</font></font></code>
+                    <font>
+                        <font>模块提供了一个</font>
+                    </font>
+                    <a class="link" href="jdbc.html#jdbc-introduction" title="19.1介绍Spring框架JDBC">
+                        <font>
+                            <font>JDBC</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font> -abstraction层，它可消除冗长的JDBC编码和数据库厂商特有的错误代码解析。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>在</font>
+                    </font><code class="literal"><font><font>春天-TX</font></font></code>
+                    <font>
+                        <font>模块支持</font>
+                    </font>
+                    <a class="link" href="transaction.html" title="17.交易管理">
+                        <font>
+                            <font>方案和声明式事务</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>
+                            管理实现特殊接口的类并为</font>
+                    </font><span class="emphasis"><em><font><font>所有的POJO（普通Java对象）</font></font></em></span>
+                    <font>
+                        <font>。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧ORM</font></font></code>
+                    <font>
+                        <font>模块提供了集成层。流行的
+                        </font>
+                    </font>
+                    <a class="link" href="orm.html#orm-introduction" title="20.1介绍ORM与Spring">
+                        <font>
+                            <font>对象关系映射</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font> API，包括</font>
+                    </font>
+                    <a class="link" href="orm.html#orm-jpa" title="PSD 20.5">
+                        <font>
+                            <font>JPA</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>，
+                        </font>
+                    </font>
+                    <a class="link" href="orm.html#orm-jdo" title="20.4 JDO">
+                        <font>
+                            <font>JDO</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>和</font>
+                    </font>
+                    <a class="link" href="orm.html#orm-hibernate" title="20.3休眠">
+                        <font>
+                            <font>Hibernate的</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>。</font>
+                        <font>使用</font>
+                    </font><code class="literal"><font><font>弹簧ORM</font></font></code>
+                    <font>
+                        <font>模块，可以与所有其他功能Spring提供的，如前面提到的简单声明性事务管理功能的使用所有这些O / R映射框架结合。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧OXM</font></font></code>
+                    <font>
+                        <font>模块提供了支持一个抽象层</font>
+                    </font>
+                    <a class="link" href="oxm.html" title="使用邻/ X映射器21编组XML">
+                        <font>
+                            <font>对象/ XML映射</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>实现，例如JAXB，蓖麻，XMLBeans的，的JiBX及XStream。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>在</font>
+                    </font><code class="literal"><font><font>春天的JMS</font></font></code>
+                    <font>
+                        <font>模块（</font>
+                    </font>
+                    <a class="link" href="jms.html" title="30. JMS（Java消息服务）">
+                        <font>
+                            <font>Java消息服务</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>）包含了生产和消费信息的功能。</font>
+                        <font>由于Spring框架4.1，它提供了集成
+                        </font>
+                    </font><code class="literal"><font><font>弹簧消息</font></font></code>
+                    <font>
+                        <font>模块。</font>
+                    </font>
+                </p>
+            </div>
+            <div class="section">
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <h3 class="title"><a name="overview-web" href="#overview-web"></a><font><font>2.2.5网页</font></font></h3></div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>在</font>
+                    </font><span class="emphasis"><em><font><font>网络</font></font></em></span>
+                    <font>
+                        <font>层由的</font>
+                    </font><code class="literal"><font><font>弹簧网</font></font></code>
+                    <font>
+                        <font>，</font>
+                    </font><code class="literal"><font><font>弹簧webmvc</font></font></code>
+                    <font>
+                        <font>，</font>
+                    </font><code class="literal"><font><font>弹簧的WebSocket</font></font></code>
+                    <font>
+                        <font>和
+                        </font>
+                    </font><code class="literal"><font><font>弹簧webmvc portlet的</font></font></code>
+                    <font>
+                        <font>模块。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>在</font>
+                    </font><code class="literal"><font><font>春天的Web</font></font></code>
+                    <font>
+                        <font>模块提供了基本的面向Web的集成特性，例如多方文件上传功能，并使用Servlet的监听器和一个面向Web的应用程序上下文IoC容器的初始化。</font>
+                        <font>它还包含一个HTTP客户端和Spring的远程支持网络相关的部分。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧webmvc</font></font></code>
+                    <font>
+                        <font>模块（也被称为</font>
+                    </font><span class="emphasis"><em><font><font>网络的Servlet</font></font></em></span>
+                    <font>
+                        <font>模块）包含Spring的模型-视图-控制器（</font>
+                    </font><a class="link" href="mvc.html#mvc-introduction" title="22.1介绍了Spring Web MVC框架"><span class="emphasis"><em><font><font>MVC</font></font></em></span></a>
+                    <font>
+                        <font>）和REST Web应用程序的Web服务实现。</font>
+                        <font>Spring的MVC框架提供的领域模型代码和web形式之间完全分离，并与所有的Spring框架的其他功能集成。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>所述</font>
+                    </font><code class="literal"><font><font>弹簧webmvc portlet的</font></font></code>
+                    <font>
+                        <font>模块（也称为</font>
+                    </font><span class="emphasis"><em><font><font>Web的Portlet的</font></font></em></span>
+                    <font>
+                        <font>模块）提供了MVC实现在一个Portlet的环境中使用，并反映了的功能</font>
+                    </font><code class="literal"><font><font>弹簧webmvc</font></font></code>
+                    <font>
+                        <font>模块。</font>
+                    </font>
+                </p>
+            </div>
+            <div class="section">
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <h3 class="title"><a name="overview-testing" href="#overview-testing"></a><font><font>2.2.6测试</font></font></h3></div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>该</font>
+                    </font><code class="literal"><font><font>弹簧测试</font></font></code>
+                    <font>
+                        <font>模块支持</font>
+                    </font>
+                    <a class="link" href="unit-testing.html" title="14.单元测试">
+                        <font>
+                            <font>单元测试</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>和
+                        </font>
+                    </font>
+                    <a class="link" href="integration-testing.html" title="15.集成测试">
+                        <font>
+                            <font>集成测试</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font> Spring组件的使用JUnit或TestNG的。</font>
+                        <font>它提供了一致的</font>
+                    </font>
+                    <a class="link" href="integration-testing.html#testcontext-ctx-management" title="15.5.4上下文管理">
+                        <font>
+                            <font>加载</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>弹簧
+                        </font>
+                    </font><code class="literal"><font><font>的ApplicationContext</font></font></code>
+                    <font>
+                        <font> S和</font>
+                    </font>
+                    <a class="link" href="integration-testing.html#testcontext-ctx-management-caching" title="上下文缓存">
+                        <font>
+                            <font>缓存</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>的上下文。</font>
+                        <font>它还提供</font>
+                    </font>
+                    <a class="link" href="unit-testing.html#mock-objects" title="14.1 Mock对象">
+                        <font>
+                            <font>mock对象</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>，你可以用孤立地测试你的代码。</font>
+                    </font>
+                </p>
+            </div>
+        </div>
+        <div class="section">
+            <div class="titlepage">
+                <div>
+                    <div>
+                        <h2 class="title" style="clear: both"><a name="overview-usagescenarios" href="#overview-usagescenarios"></a><font><font>2.3使用场景</font></font></h2></div>
+                </div>
+            </div>
+            <p>
+                <font>
+                    <font>先前描述的积木使弹簧一个合乎逻辑的选择在许多情况下，从在资源受限设备上运行，以使用Spring的交易管理功能和网络框架集成完全成熟的企业应用的嵌入式应用。</font>
+                </font>
+            </p>
+            <div class="figure">
+                <a name="d5e313" href="#d5e313"></a>
+                <p class="title"><b><font><font>图2.2。</font><font>典型的完整Spring Web应用程序</font></font></b></p>
+                <div class="figure-contents">
+                    <div class="mediaobject"><img src="images/overview-full.png" alt="概述全"></div>
+                </div>
+            </div>
+            <br class="figure-break">
+            <p>
+                <font>
+                    <font>Spring的</font>
+                </font>
+                <a class="link" href="transaction.html#transaction-declarative" title="17.5声明式事务管理">
+                    <font>
+                        <font>声明式事务管理功能</font>
+                    </font>
+                </a>
+                <font>
+                    <font>使Web应用程序完全事务性，就像如果你使用EJB容器管理事务的那样。</font>
+                    <font>您所有的自定义业务逻辑可以通过简单的POJO来实现，并通过Spring的IoC容器管理。</font>
+                    <font>其他服务包括用于发送电子邮件和验证独立于网络层，它可以让你选择在哪里执行校验规则的支持。</font>
+                    <font>Spring的ORM支持集成JPA，Hibernate和JDO; </font>
+                    <font>例如，当使用Hibernate时，您可以继续使用现有的映射文件和标准的Hibernate </font>
+                </font><code class="literal"><font><font>SessionFactory的</font></font></code>
+                <font>
+                    <font>配置。</font>
+                    <font>用控制器无缝web层和领域模型集成，消除了需要</font>
+                </font><code class="literal"><font><font>的ActionForm</font></font></code>
+                <font>
+                    <font>该转换HTTP参数为领域模型或其他类。</font>
+                </font>
+            </p>
+            <div class="figure">
+                <a name="d5e324" href="#d5e324"></a>
+                <p class="title"><b><font><font>图2.3。</font><font>使用第三方Web框架Spring中间层</font></font></b></p>
+                <div class="figure-contents">
+                    <div class="mediaobject"><img src="images/overview-thirdparty-web.png" alt="概述第三方网站"></div>
+                </div>
+            </div>
+            <br class="figure-break">
+            <p>
+                <font>
+                    <font>有时候，情况不允许你彻底地切换到不同的框架。</font>
+                    <font>Spring框架并</font>
+                </font><span class="emphasis"><em><font><font>没有</font></font></em></span>
+                <font>
+                    <font>强迫你在使用它的一切; </font>
+                    <font>它不是一个
+                    </font>
+                </font><span class="emphasis"><em><font><font>全有或全无</font></font></em></span>
+                <font>
+                    <font>溶液。</font>
+                    <font>使用Struts，Tapestry中，JSF或其他的UI框架构建现有的前端可以与基于Spring的中间层，它允许你使用Spring的事务特性进行集成。</font>
+                    <font>您只需线了使用你的业务逻辑</font>
+                </font><code class="literal"><font><font>的ApplicationContext</font></font></code>
+                <font>
+                    <font>和使用</font>
+                </font><code class="literal"><font><font>的WebApplicationContext</font></font></code>
+                <font>
+                    <font>来集成你的web层。</font>
+                </font>
+            </p>
+            <div class="figure">
+                <a name="d5e336" href="#d5e336"></a>
+                <p class="title"><b><font><font>图2.4。</font><font>远程使用场景</font></font></b></p>
+                <div class="figure-contents">
+                    <div class="mediaobject"><img src="images/overview-remoting.png" alt="概述远程"></div>
+                </div>
+            </div>
+            <br class="figure-break">
+            <p>
+                <font>
+                    <font>当你需要通过Web服务来访问现有的代码，你可以使用Spring的
+                    </font>
+                </font><code class="literal"><font><font>Hessian-</font></font></code>
+                <font>
+                    <font>，</font>
+                </font><code class="literal"><font><font>Burlap-</font></font></code>
+                <font>
+                    <font>，</font>
+                </font><code class="literal"><font><font>Rmi-</font></font></code>
+                <font>
+                    <font>或</font>
+                </font><code class="literal"><font><font>JaxRpcProxyFactory</font></font></code>
+                <font>
+                    <font>类。</font>
+                    <font>现有应用程序的远程访问并不困难。</font>
+                </font>
+            </p>
+            <div class="figure">
+                <a name="d5e348" href="#d5e348"></a>
+                <p class="title"><b><font><font>图2.5。</font><font>EJB的 - 包装现有的POJOs</font></font></b></p>
+                <div class="figure-contents">
+                    <div class="mediaobject"><img src="images/overview-ejb.png" alt="概述EJB"></div>
+                </div>
+            </div>
+            <br class="figure-break">
+            <p>
+                <font>
+                    <font>Spring框架还提供了一个</font>
+                </font>
+                <a class="link" href="ejb.html" title="29.企业JavaBeans（EJB）融合">
+                    <font>
+                        <font>访问和抽象层</font>
+                    </font>
+                </a>
+                <font>
+                    <font>为企业JavaBeans，使您能够重用现有的POJO和包装他们无状态会话bean中使用的可扩展性，故障安全可能需要声明的安全Web应用程序。</font>
+                </font>
+            </p>
+            <div class="section">
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <h3 class="title"><a name="dependency-management" href="#dependency-management"></a><font><font>2.3.1依赖管理和命名约定</font></font></h3></div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>依赖管理和依赖注入是不同的东西。</font>
+                        <font>为了让Spring的这些不错的功能到应用程序（如依赖注入），你需要装配所需要的所有库（JAR文件），并在运行时让他们到你的classpath，并可能在编译的时候。</font>
+                        <font>这些依赖关系不被注射虚拟组件，但在一个文件系统（典型的）物理资源。</font>
+                        <font>依赖管理的过程包括定位这些资源，存储它们并将它们添加到类路径。</font>
+                        <font>依赖关系可以是直接的（如我的应用程序依赖于在运行春季），或间接的（例如：我的应用程序依赖于</font>
+                    </font><code class="literal"><font><font>公共-DBCP</font></font></code>
+                    <font>
+                        <font>依赖于
+                        </font>
+                    </font><code class="literal"><font><font>公共池</font></font></code>
+                    <font>
+                        <font>）。</font>
+                        <font>间接依赖性也被称为“传递”，它是那些最难依赖性来识别和管理。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>如果你打算使用Spring，你需要获得包括春，你需要的作品的jar库的一个副本。</font>
+                        <font>为了更方便春打包为一组的依赖关系分开，尽可能，因此，例如，如果你不想写你不需要弹簧Web模块的Web应用程序模块。</font>
+                        <font>要引用本指南中，我们使用速记命名约定到Spring库模块</font>
+                    </font><code class="literal"><font><font>弹簧*</font></font></code>
+                    <font>
+                        <font>或
+                        </font>
+                    </font><code class="literal"><font><font>春天- *罐子，</font></font></code>
+                    <font>
+                        <font>其中，</font>
+                    </font><code class="literal"><font><font>*</font></font></code>
+                    <font>
+                        <font>代表的短名称为模块（如</font>
+                    </font><code class="literal"><font><font>弹簧芯</font></font></code>
+                    <font>
+                        <font>，</font>
+                    </font><code class="literal"><font><font>弹簧webmvc</font></font></code>
+                    <font>
+                        <font>，</font>
+                    </font><code class="literal"><font><font>弹簧JMS</font></font></code>
+                    <font>
+                        <font>等。 ）。</font>
+                        <font>您使用的实际的jar文件名 ​​通常是版本号（如级联模块名</font>
+                    </font><span class="emphasis"><em><font><font>弹簧芯4.3.1.RELEASE.jar</font></font></em></span>
+                    <font>
+                        <font>）。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>Spring框架的每个版本将公布文物以下几个地方：</font>
+                    </font>
+                </p>
+                <div class="itemizedlist">
+                    <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                            <font>
+                                <font>
+                                    Maven的中央，这是Maven的查询默认存储库，并且不需要任何特殊的配置来使用。</font>
+                                <font>许多春依赖也可从Maven的中央和Spring社区的一大段使用的Maven的依赖管理，所以这是方便他们共同的库。</font>
+                                <font>这里的罐子的名称是形式</font>
+                            </font><code class="literal"><font><font>春天- * - &lt;版本&gt;的.jar</font></font></code>
+                            <font>
+                                <font>和Maven的的groupId是</font>
+                            </font><code class="literal"><font><font>org.springframework</font></font></code>
+                            <font>
+                                <font>。
+                                </font>
+                            </font>
+                        </li>
+                        <li class="listitem">
+                            <font>
+                                <font>
+                                    在公共Maven仓库专门宴请春天。</font>
+                                <font>除了最后的GA版本中，这个仓库还主持开发快照和里程碑。</font>
+                                <font>JAR文件名是在相同的形式Maven的中央，所以这是一个有用的地方，让春天的开发版本与部署在中央Maven的其他库使用。</font>
+                                <font>该库还包含包含方便地下载捆绑在一起，所有的Spring罐子捆绑分发zip文件。
+                                </font>
+                            </font>
+                        </li>
+                    </ul>
+                </div>
+                <p>
+                    <font>
+                        <font>所以，你需要决定的第一件事就是如何管理你的依赖：我们一般建议使用类似Maven，摇篮或常春藤自动化系统的，但你也可以做手工通过下载所有的罐子自己。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>你会发现娄春文物的名单。</font>
+                        <font>对于每个模块的更完整的说明，请参见</font>
+                    </font>
+                    <a class="xref" href="overview.html#overview-modules" title="2.2模块">
+                        <font>
+                            <font>第2.2节“模块”</font>
+                        </font>
+                    </a>
+                    <font>
+                        <font>。</font>
+                    </font>
+                </p>
+                <div class="table">
+                    <a name="d5e381" href="#d5e381"></a>
+                    <p class="title"><b><font><font>表2.1。</font><font>Spring框架文物</font></font></b></p>
+                    <div class="table-contents">
+                        <table summary="Spring Framework Artifacts" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; ">
+                            <colgroup>
+                                <col class="col_1">
+                                <col class="col_2">
+                                <col class="col_3">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <font>
+                                            <font>的GroupId</font>
+                                        </font>
+                                    </th>
+                                    <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <font>
+                                            <font>的artifactId</font>
+                                        </font>
+                                    </th>
+                                    <th style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <font>
+                                            <font>描述</font>
+                                        </font>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>春天的AOP</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>基于代理的AOP支持</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧方面</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>基于AspectJ方面</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>春豆</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>豆类支持，包括Groovy中</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>春天上下文</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>应用程序上下文运行时，包括调度和远程抽象</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧上下文支持</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>支持类常见的第三方库集成到Spring应用程序上下文</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧芯</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>核心工具，许多其他Spring模块使用</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧式</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>春天表达式语言（规划环境地政司）</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧仪</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>仪表代理JVM引导</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧仪器的tomcat</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>代理仪器为Tomcat</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧JDBC</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>JDBC支持包，包括数据源设置和JDBC访问的支持</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>春天般的</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>JMS支持包，包括助手类来发送和接收JMS消息</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>春消息</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>消息传递架构和协议的支持</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧ORM</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>对象/关系映射，包括JPA和Hibernate支持</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>春天OXM</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>对象/ XML映射</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧试验</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>单元测试和集成测试Spring组件支持</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>春天-TX</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>交易基础设施，包括DAO支持和集成制定</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧网</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>Web支持软件包，包括客户端和Web远程</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧webmvc</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>REST Web服务和模型 - 视图 - 控制器Web应用程序执行</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧webmvc的portlet</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-bottom: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>MVC实现在一个Portlet的环境中使用</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>org.springframework</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="border-right: 0.5pt solid ; " align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>弹簧的WebSocket</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                    <td style="" align="left" valign="top">
+                                        <p>
+                                            <font>
+                                                <font>的WebSocket和SockJS实现，包括STOMP支持</font>
+                                            </font>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br class="table-break">
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-spring-dependencies" href="#overview-spring-dependencies"></a><font><font>Spring的依赖，并依赖于春</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>虽然Spring提供了一个庞大的企业和其他外部工具的范围集成和支持，它有意保持其强制依赖降到最低：你不应该来定位和为了下载（甚至自动）大量的jar库来使用Spring进行简单的用例。</font>
+                            <font>对于基本的依赖注入，只有一个强制性的外部依赖，这是用于记录（见下面的日志选项更详细的说明）。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>接下来我们勾勒配置依赖于春，先与Maven，然后用摇篮最后用常春藤的应用程序所需的基本步骤。</font>
+                            <font>在所有的情况下，如果有不清楚的地方，请参阅您的依赖关系管理系统的文档，或看一些示例代码 - Spring本身使用的摇篮，当它正在建设管理的依赖，我们的样本大多使用摇篮或Maven。</font>
+                        </font>
+                    </p>
+                </div>
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-maven-dependency-management" href="#overview-maven-dependency-management"></a><font><font>Maven的依赖管理</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>如果您使用</font>
+                        </font>
+                        <a class="ulink" href="http://maven.apache.org/" target="_top">
+                            <font>
+                                <font>的Maven</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>的依赖管理，你甚至都不需要显式提供日志依赖。</font>
+                            <font>例如，要创建一个应用程序上下文，并使用依赖注入来配置应用程序，你的Maven的依赖将是这样的：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;dependencies&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.springframework </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> spring-context </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 4.3.1.RELEASE </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;scope&gt;</font></font></span><font><font> runtime </font></font><span class="hl-tag"><font><font>&lt;/scope&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/dependencies&gt;</font></font></span></pre>
+                    <p>
+                        <font>
+                            <font>而已。</font>
+                            <font>注意范围可以声明为运行时，如果你不需要进行编译春天的API，这通常是基本依赖注入的用例的情况。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>上面的例子使用Maven中央存储库工作。</font>
+                            <font>使用Spring Maven仓库（如里程碑或开发快照），你需要在你的Maven配置，指定存储库位置。</font>
+                            <font>对于完整版本：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;repositories&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;repository&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;id&gt;</font></font></span><font><font> io.spring.repo.maven.release </font></font><span class="hl-tag"><font><font>&lt;/id&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;url&gt;</font></font></span><font><font> http://repo.spring.io/release/ </font></font><span class="hl-tag"><font><font>&lt;/url&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;snapshots&gt; </font></font></span><span class="hl-tag"><font><font>&lt;enabled&gt;</font></font></span><font><font> false </font></font><span class="hl-tag"><font><font>&lt;/enabled&gt; </font></font></span><span class="hl-tag"><font><font>&lt;/snapshots&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/repository&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/repositories&gt;</font></font></span></pre>
+                    <p>
+                        <font>
+                            <font>对于里程碑：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;repositories&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;repository&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;id&gt;</font></font></span><font><font> io.spring.repo.maven.milestone </font></font><span class="hl-tag"><font><font>&lt;/id&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;url&gt;</font></font></span><font><font> http://repo.spring.io/milestone/ </font></font><span class="hl-tag"><font><font>&lt;/url&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;snapshots&gt; </font></font></span><span class="hl-tag"><font><font>&lt;enabled&gt;</font></font></span><font><font> false </font></font><span class="hl-tag"><font><font>&lt;/enabled&gt; </font></font></span><span class="hl-tag"><font><font>&lt;/snapshots&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/repository&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/repositories&gt;</font></font></span></pre>
+                    <p>
+                        <font>
+                            <font>而对于快照：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;repositories&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;repository&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;id&gt;</font></font></span><font><font> io.spring.repo.maven.snapshot </font></font><span class="hl-tag"><font><font>&lt;/id&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;url&gt;</font></font></span><font><font> http://repo.spring.io/snapshot/ </font></font><span class="hl-tag"><font><font>&lt;/url&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;snapshots&gt; </font></font></span><span class="hl-tag"><font><font>&lt;enabled&gt;</font></font></span><font><font> true </font></font><span class="hl-tag"><font><font>&lt;/enabled&gt; </font></font></span><span class="hl-tag"><font><font>&lt;/snapshots&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/repository&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/repositories&gt;</font></font></span></pre>
+                </div>
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-maven-bom" href="#overview-maven-bom"></a><font><font>Maven的“材料清单”依赖</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>它可以使用Maven的时候不小心混用不同版本的春天JAR的。</font>
+                            <font>例如，您可能会发现一个第三方的图书馆或其他Spring项目，在拉的传递性依赖于较旧版本。</font>
+                            <font>如果你忘记了自己显式声明的直接依赖，意想不到的问题，各种可能出现。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>为了克服这些问题，Maven的支持（BOM）依赖“材料清单”的概念。</font>
+                            <font>可以导入</font>
+                        </font><code class="literal"><font><font>Spring框架的-BOM</font></font></code>
+                        <font>
+                            <font>在</font>
+                        </font><code class="literal"><font><font>dependencyManagement</font></font></code>
+                        <font>
+                            <font>
+                                部分，以确保所有Spring的依赖（直接和间接）处于相同的版本。</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;dependencyManagement&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependencies&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.springframework </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> spring-framework-bom </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 4.3.1.RELEASE </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;type&gt;</font></font></span><font><font> pom </font></font><span class="hl-tag"><font><font>&lt;/type&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;scope&gt;</font></font></span><font><font> import </font></font><span class="hl-tag"><font><font>&lt;/scope&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependencies&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/dependencyManagement&gt;</font></font></span></pre>
+                    <p>
+                        <font>
+                            <font>使用BOM的一个额外好处是，你不再需要指定</font>
+                        </font><code class="literal"><font><font>&lt;版本&gt;</font></font></code>
+                        <font>
+                            <font>
+                                根据Spring框架工件时，属性：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;dependencies&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.springframework </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> spring-context </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.springframework </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> spring-web </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;dependencies&gt;</font></font></span></pre>
+                </div>
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-gradle-dependency-management" href="#overview-gradle-dependency-management"></a><font><font>摇篮依赖管理</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>为了与使用Spring库</font>
+                        </font>
+                        <a class="ulink" href="http://www.gradle.org/" target="_top">
+                            <font>
+                                <font>摇篮</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>构建系统，包括在适当的URL </font>
+                        </font><code class="literal"><font><font>库</font></font></code>
+                        <font>
+                            <font>部分：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><font><font>库{</font></font><font></font><font><font>
+    mavenCentral（）</font></font><font></font>
+    <span class="hl-comment"><font><font>//和可选...</font></font></span><font><font> 
+    行家{URL </font></font><span class="hl-string"><font><font>“http://repo.spring.io/release”</font></font></span><font><font> }</font></font><font></font>
 }</pre>
-<p>You can change the <code class="literal">repositories</code> URL from <code class="literal">/release</code> to <code class="literal">/milestone</code> or <code class="literal">/snapshot</code> as
-appropriate. Once a repository has been configured, you can declare dependencies in the
-usual Gradle way:</p>
-<pre class="programlisting">dependencies {
-    compile(<span class="hl-string">"org.springframework:spring-context:4.3.1.RELEASE"</span>)
-    testCompile(<span class="hl-string">"org.springframework:spring-test:4.3.1.RELEASE"</span>)
-}</pre>
-</div>
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-ivy-dependency-management" href="#overview-ivy-dependency-management"></a>Ivy Dependency Management</h4></div></div></div>
+                    <p>
+                        <font>
+                            <font>您可以更改</font>
+                        </font><code class="literal"><font><font>库</font></font></code>
+                        <font>
+                            <font>从URL </font>
+                        </font><code class="literal"><font><font>/释放</font></font></code>
+                        <font>
+                            <font>到</font>
+                        </font><code class="literal"><font><font>/里程碑</font></font></code>
+                        <font>
+                            <font>或</font>
+                        </font><code class="literal"><font><font>/快照</font></font></code>
+                        <font>
+                            <font>为宜。</font>
+                            <font>一旦库已配置，你可以宣布在平时的摇篮方式的依赖关系：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><font><font>依赖{</font></font><font></font><font><font>
+    编译（</font></font><span class="hl-string"><font><font>“org.springframework：春天上下文：4.3.1.RELEASE” </font></font></span><font><font>）</font></font><font></font><font><font>
+    testCompile（</font></font><span class="hl-string"><font><font>“org.springframework：弹簧试验：4.3.1.RELEASE” </font></font></span><font><font>）</font></font><font></font><font><font>
+}</font></font></pre>
+                </div>
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-ivy-dependency-management" href="#overview-ivy-dependency-management"></a><font><font>常春藤依赖管理</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>如果你喜欢用</font>
+                        </font>
+                        <a class="ulink" href="http://ant.apache.org/ivy" target="_top">
+                            <font>
+                                <font>常春藤</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>管理的依赖关系，然后也有类似的配置选项。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>要配置常春藤指向春天库添加下面的解析您
+                            </font>
+                        </font><code class="literal"><font><font>ivysettings.xml</font></font></code>
+                        <font>
+                            <font>：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;resolvers&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;ibiblio </font></font></span> <span class="hl-attribute"><font><font>name</font></font></span><font><font> = </font></font><span class="hl-value"><font><font>"io.spring.repo.maven.release" </font></font></span>
+            <span class="hl-attribute"><font><font>m2compatible</font></font></span><font><font> = </font></font><span class="hl-value"><font><font>"true" </font></font></span>
+            <span class="hl-attribute"><font><font>root</font></font></span><font><font> = </font></font><span class="hl-value"><font><font>"http://repo.spring.io/release/" </font></font></span><span class="hl-tag"><font><font>/&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/resolvers&gt;</font></font></span></pre>
+                    <p>
+                        <font>
+                            <font>您可以更改</font>
+                        </font><code class="literal"><font><font>根</font></font></code>
+                        <font>
+                            <font>从URL </font>
+                        </font><code class="literal"><font><font>/发行/</font></font></code>
+                        <font>
+                            <font>到</font>
+                        </font><code class="literal"><font><font>/里程碑/</font></font></code>
+                        <font>
+                            <font>或</font>
+                        </font><code class="literal"><font><font>/快照/</font></font></code>
+                        <font>
+                            <font>为宜。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>配置完成后，你可以用通常的方式添加依赖。</font>
+                            <font>例如（在</font>
+                        </font><code class="literal"><font><font>的ivy.xml</font></font></code>
+                        <font>
+                            <font>）：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;依赖</font></font></span> <span class="hl-attribute"><font><font>组织</font></font></span><font><font> = </font></font><span class="hl-value"><font><font>“org.springframework” </font></font></span>
+    <span class="hl-attribute"><font><font>名称</font></font></span><font><font> = </font></font><span class="hl-value"><font><font>“泉芯” </font></font></span> <span class="hl-attribute"><font><font>REV</font></font></span><font><font> = </font></font><span class="hl-value"><font><font>“4.3.1.RELEASE” </font></font></span> <span class="hl-attribute"><font><font>的conf</font></font></span><font><font> = </font></font><span class="hl-value"><font><font>“之前编制&gt;运行” </font></font></span><span class="hl-tag"><font><font>/&gt;</font></font></span></pre>
+                </div>
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-distribution-zip" href="#overview-distribution-zip"></a><font><font>分布Zip文件</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>虽然使用支持依赖管理构建系统是获得Spring框架是推荐的方式，仍然可以下载一个分发的zip文件。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>分布拉链发布到春天Maven仓库（这仅仅是我们的方便，你不需要Maven的或任何其他构建系统，以下载它们）。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>下载一个压缩包打开Web浏览器来
+                            </font>
+                        </font>
+                        <a class="ulink" href="http://repo.spring.io/release/org/springframework/spring" target="_top">
+                            <font>
+                                <font>http://repo.spring.io/release/org/springframework/spring</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>并选择您想要的版本的相应子文件夹。</font>
+                            <font>发行文件结束</font>
+                        </font><code class="literal"><font><font>-dist.zip</font></font></code>
+                        <font>
+                            <font>，例如弹簧框架- {春}版本-RELEASE-dist.zip。</font>
+                            <font>分布还出版了</font>
+                        </font>
+                        <a class="ulink" href="http://repo.spring.io/milestone/org/springframework/spring" target="_top">
+                            <font>
+                                <font>里程碑</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>和
+                            </font>
+                        </font>
+                        <a class="ulink" href="http://repo.spring.io/snapshot/org/springframework/spring" target="_top">
+                            <font>
+                                <font>快照</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>。</font>
+                        </font>
+                    </p>
+                </div>
+            </div>
+            <div class="section">
+                <div class="titlepage">
+                    <div>
+                        <div>
+                            <h3 class="title"><a name="overview-logging" href="#overview-logging"></a><font><font>2.3.2记录</font></font></h3></div>
+                    </div>
+                </div>
+                <p>
+                    <font>
+                        <font>日志记录是春天有个很重要的依赖，因为</font>
+                    </font><span class="emphasis"><em><font><font>A）</font></font></em></span>
+                    <font>
+                        <font>它是唯一的强制性的外部依赖，</font>
+                    </font><span class="emphasis"><em><font><font>B）</font></font></em></span>
+                    <font>
+                        <font>每个人都喜欢看到他们使用的工具的一些输出，并且</font>
+                    </font><span class="emphasis"><em><font><font>C）</font></font></em></span>
+                    <font>
+                        <font>春，有很多其他工具所有这一切也取得了集成选择日志依赖。</font>
+                        <font>其中一个应用程序开发者的目标往往是在一个中心位置配置了整个应用程序统一日志记录，包括所有的外部元件。</font>
+                        <font>这是更困难比它可能是因为有日志框架这么多的选择。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>在Spring中强制性的日志依赖为Jakarta Commons的日志记录API（JCL）。</font>
+                        <font>我们对编译JCL，我们也使JCL </font>
+                    </font><code class="literal"><font><font>日志</font></font></code>
+                    <font>
+                        <font>对象为扩展Spring框架类可见。</font>
+                        <font>这是到春天的版本使用相同的日志库用户来说非常重要：因为向后兼容性甚至与扩展Spring应用程序迁移保存容易。</font>
+                        <font>我们做到这一点的方法是使Spring中的模块中的一个显式依赖</font>
+                    </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                    <font>
+                        <font>（规范实施JCL的），然后让所有的其他模块依赖于在编译时。</font>
+                        <font>如果您在使用Maven例如，不知道在那里你拿起依赖
+                        </font>
+                    </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                    <font>
+                        <font>，那么它是春天和专门从称为中央模块</font>
+                    </font><code class="literal"><font><font>弹簧核心</font></font></code>
+                    <font>
+                        <font>。</font>
+                    </font>
+                </p>
+                <p>
+                    <font>
+                        <font>约的好处</font>
+                    </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                    <font>
+                        <font>是，你不需要任何东西，使你的应用程序的工作。</font>
+                        <font>它有一个运行时发现算法会在类路径上的著名地方其他日志框架，并使用一个它认为是合适的（或者你可以告诉它哪一个，如果你需要）。</font>
+                        <font>如果不出意外，请您刚刚从JDK（java.util.logging中或JUL的简称）得到相当好看日志。</font>
+                        <font>你会发现，你的Spring应用程序的工作，并愉快地登录到控制台出在大多数情况下的盒子，这是非常重要的。</font>
+                    </font>
+                </p>
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-not-using-commons-logging" href="#overview-not-using-commons-logging"></a><font><font>不使用共享日志记录</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>不幸的是，在运行时发现算法</font>
+                        </font><code class="literal"><font><font>共享记录</font></font></code>
+                        <font>
+                            <font>，而方便了终端用户，是有问题的。</font>
+                            <font>如果我们能够倒流，并开始春季现在作为一个新的项目将使用一个不同的日志依赖。</font>
+                            <font>第一选择很可能是对Java（简单记录门面</font>
+                        </font>
+                        <a class="ulink" href="http://www.slf4j.org" target="_top">
+                            <font>
+                                <font>SLF4J</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>），它也使用了很多的人用自己的应用程序内弹簧使用其它工具。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>基本上有两种方式来关闭</font>
+                        </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                        <font>
+                            <font>：</font>
+                        </font>
+                    </p>
+                    <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                            <li class="listitem">
+                                <font>
+                                    <font>
+                                        排除从依赖</font>
+                                </font><code class="literal"><font><font>弹簧核心</font></font></code>
+                                <font>
+                                    <font>模块（因为它是明确地依赖于唯一模块</font>
+                                </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                                <font>
+                                    <font>）
+                                    </font>
+                                </font>
+                            </li>
+                            <li class="listitem">
+                                <font>
+                                    <font>
+                                        依赖于特殊</font>
+                                </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                                <font>
+                                    <font>依赖替换用空罐子库（更多细节，可以在找到
+                                    </font>
+                                </font>
+                                <a class="ulink" href="http://slf4j.org/faq.html#excludingJCL" target="_top">
+                                    <font>
+                                        <font>SLF4J常见问题解答</font>
+                                    </font>
+                                </a>
+                                <font>
+                                    <font>）
+                                    </font>
+                                </font>
+                            </li>
+                        </ol>
+                    </div>
+                    <p>
+                        <font>
+                            <font>要排除的commons-logging，以下内容添加到您的</font>
+                        </font><code class="literal"><font><font>dependencyManagement</font></font></code>
+                        <font>
+                            <font>部分：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;dependencies&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.springframework </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> spring-core </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 4.3.1.RELEASE </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;exclusions&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;exclusion&gt; </font></font></span>
+                <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> commons-logging </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+                <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> commons-logging </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;/exclusion&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;/exclusions&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/dependencies&gt;</font></font></span></pre>
+                    <p>
+                        <font>
+                            <font>现在，这个应用程序可能破裂，因为没有在类路径中JCL API的实现，所以要修复它一个新的，必须提供。</font>
+                            <font>在下一节中，我们将介绍如何使用SLF4J为例，提供了另一种实现JCL的。</font>
+                        </font>
+                    </p>
+                </div>
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-logging-slf4j" href="#overview-logging-slf4j"></a><font><font>使用SLF4J</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>SLF4J是一个更清洁的依赖，更高效的运行时比</font>
+                        </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                        <font>
+                            <font>
+                                ，因为它使用编译时绑定，而不是它集成了其他日志框架的运行时发现。</font>
+                            <font>这也意味着，你必须更明确你想要在运行时发生的事情，并宣布它或相应配置。</font>
+                            <font>SLF4J提供了绑定到许多常用日志框架，因此通常可以选择一个你已经在使用，并绑定到的配置和管理。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>SLF4J提供了绑定到许多常用日志框架，包括JCL，它也做相反的：其他日志框架和它本身之间的桥梁。</font>
+                            <font>因此，要使用SLF4J使用Spring，你需要更换</font>
+                        </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                        <font>
+                            <font>与SLF4J-JCL桥依赖。</font>
+                            <font>一旦你这样做从内部弹簧的话记录通话将被转换成日志记录调用的API SLF4J，因此，如果您的应用程序其他库使用的API，那么你有一个地方配置和管理日志记录。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>一个常见的选择是弥合春天到SLF4J，然后Log4J的提供从SLF4J明确约束力。</font>
+                            <font>您需要提供4依赖（并排除现有
+                            </font>
+                        </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                        <font>
+                            <font>）：桥，SLF4J API，到Log4J的绑定和Log4j实现本身。</font>
+                            <font>在Maven的你会是这样做的</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;dependencies&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.springframework </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> spring-core </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 4.3.1.RELEASE </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;exclusions&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;exclusion&gt; </font></font></span>
+                <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> commons-logging </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+                <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> commons-logging </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+            <span class="hl-tag"><font><font>&lt;/exclusion&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;/exclusions&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.slf4j </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> jcl-over-slf4j </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 1.5.8 </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.slf4j </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> slf4j-api </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 1.5.8 </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.slf4j </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> slf4j-log4j12 </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 1.5.8 </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> log4j </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> log4j </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 1.2.14 </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/dependencies&gt;</font></font></span></pre>
+                    <p>
+                        <font>
+                            <font>这似乎是一个很大的依赖性只是为了得到一些日志记录。</font>
+                            <font>那么它是，但它
+                            </font>
+                        </font><span class="emphasis"><em><font><font>是</font></font></em></span>
+                        <font>
+                            <font>可选的，它应该表现比香草更好</font>
+                        </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                        <font>
+                            <font>相对于类加载器的问题，特别是如果你是像一个OSGi平台严格的容器。</font>
+                            <font>据说也有性能优势，因为绑定是在编译时不运行。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>更常见的选择之中SLF4J用户，使用更少的步骤，并产生更少的依赖关系，是直接绑定到</font>
+                        </font>
+                        <a class="ulink" href="http://logback.qos.ch" target="_top">
+                            <font>
+                                <font>的logback</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>。</font>
+                            <font>这消除了额外的绑定步骤，因为直接的logback实现SLF4J，所以你只需要依赖两个库不是 ​​四个（</font>
+                        </font><code class="literal"><font><font>JCL-过SLF4J</font></font></code>
+                        <font>
+                            <font>和</font>
+                        </font><code class="literal"><font><font>的logback</font></font></code>
+                        <font>
+                            <font>）。</font>
+                            <font>如果你这样做，你可能还需要排除来自其他外部依赖的SLF4J的API的依赖（不是Spring），因为你只需要在类路径中该API的一个版本。</font>
+                        </font>
+                    </p>
+                </div>
+                <div class="section">
+                    <div class="titlepage">
+                        <div>
+                            <div>
+                                <h4 class="title"><a name="overview-logging-log4j" href="#overview-logging-log4j"></a><font><font>Log4J的使用</font></font></h4></div>
+                        </div>
+                    </div>
+                    <p>
+                        <font>
+                            <font>很多人使用</font>
+                        </font>
+                        <a class="ulink" href="http://logging.apache.org/log4j" target="_top">
+                            <font>
+                                <font>的Log4j</font>
+                            </font>
+                        </a>
+                        <font>
+                            <font>作为配置和管理目的的日志框架。</font>
+                            <font>它的高效和完善的，而事实上这是我们在运行时使用，当我们构建和测试春天。</font>
+                            <font>Spring还提供了配置和初始化Log4j的一些公用事业，所以它在一些模块上Log4j的一个可选的编译时依赖。</font>
+                        </font>
+                    </p>
+                    <p>
+                        <font>
+                            <font>为了与默认的JCL依赖（Log4j的工作</font>
+                        </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                        <font>
+                            <font>），所有你需要做的就是把Log4j的在类路径中，并为它提供一个配置文件（
+                            </font>
+                        </font><code class="literal"><font><font>log4j.properties</font></font></code>
+                        <font>
+                            <font>或</font>
+                        </font><code class="literal"><font><font>log4j.xml文件</font></font></code>
+                        <font>
+                            <font>在classpath的根目录）。</font>
+                            <font>所以对于Maven用户，这是你的依赖声明：</font>
+                        </font>
+                    </p>
+                    <pre class="programlisting"><span class="hl-tag"><font><font>&lt;dependencies&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> org.springframework </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> spring-core </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 4.3.1.RELEASE </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;dependency&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;groupId&gt;</font></font></span><font><font> log4j </font></font><span class="hl-tag"><font><font>&lt;/groupId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;artifactId&gt;</font></font></span><font><font> log4j </font></font><span class="hl-tag"><font><font>&lt;/artifactId&gt; </font></font></span>
+        <span class="hl-tag"><font><font>&lt;version&gt;</font></font></span><font><font> 1.2.14 </font></font><span class="hl-tag"><font><font>&lt;/version&gt; </font></font></span>
+    <span class="hl-tag"><font><font>&lt;/dependency&gt; </font></font></span>
+<span class="hl-tag"><font><font>&lt;/dependencies&gt;</font></font></span></pre>
+                    <p>
+                        <font>
+                            <font>下面是用于登录到控制台的示例log4j.properties：</font>
+                        </font>
+                    </p>
+                    <pre class="literallayout"><font><font>log4j.rootCategory = INFO，标准输出</font></font><font></font>
+<font></font><font><font>
+log4j.appender.stdout = org.apache.log4j.ConsoleAppender</font></font><font></font><font><font>
+log4j.appender.stdout.layout = org.apache.log4j.PatternLayout</font></font><font></font><font><font>
+log4j.appender.stdout.layout.ConversionPattern =％d个{}绝对5P％％T％C {2}：％L  - ％M％N</font></font><font></font>
+<font></font><font><font>
+log4j.category.org.springframework.beans.factory = DEBUG</font></font></pre>
+                    <div class="section">
+                        <div class="titlepage">
+                            <div>
+                                <div>
+                                    <h5 class="title"><a name="overview-native-jcl" href="#overview-native-jcl"></a><font><font>与本地JCL运行时容器</font></font></h5></div>
+                            </div>
+                        </div>
+                        <p>
+                            <font>
+                                <font>许多人在那些本身提供JCL的实现的容器中运行他们的Spring应用程序。</font>
+                                <font>IBM WebSphere应用服务器（WAS）为原型。</font>
+                                <font>这往往会导致问题，遗憾的是没有一劳永逸的解决方案; </font>
+                                <font>除简单</font>
+                            </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                            <font>
+                                <font>从您的应用程序是不够的，在大多数情况下。</font>
+                            </font>
+                        </p>
+                        <p>
+                            <font>
+                                <font>要清楚这一点：报告的问题通常不与JCL本身，甚至用</font>
+                            </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                            <font>
+                                <font>：相反，它们是用结合做</font>
+                            </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                            <font>
+                                <font>到另一个框架（通常Log4J的）。</font>
+                                <font>因为这可能会失败</font>
+                            </font><code class="literal"><font><font>的commons-logging</font></font></code>
+                            <font>
+                                <font>改变他们做的运行时发现，在一些容器中发现的旧版本（1.0），而现在大多数人（1.1）使用现代版本之间的道路。</font>
+                                <font>Spring不使用JCL API中任何不寻常的地方，所以没有什么突破有，但只要Spring或应用程序尝试这样做，你可以找到的绑定Log4J的不工作的任何记录。</font>
+                            </font>
+                        </p>
+                        <p>
+                            <font>
+                                <font>在这种情况下，用是最容易的事情就是反转类装载器层次（IBM称之为“父最后一个”），从而使应用控制JCL依赖，而不是容器。</font>
+                                <font>这种选择并不总是开放的，但也有很多的替代办法的公共领域的其他建议，你的里程可能会根据确切的版本和功能集容器的不同而不同。</font>
+                            </font>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="goog-gt-tt" class="goog-tooltip skiptranslate" dir="ltr" style="visibility: hidden; left: 828px; top: 9945px; display: none;">
+        <div style="padding: 8px;">
+            <div>
+                <div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20"></div>
+            </div>
+        </div>
+        <div class="top" style="padding: 8px; float: left; width: 100%;">
+            <h1 class="title gray">原文</h1></div>
+        <div class="middle" style="padding: 8px;">
+            <div class="original-text">The ApplicationContext interface is the focal point of the Context module. spring-context-support provides support for integrating common third-party libraries into a Spring application context for caching (EhCache, Guava, JCache), mailing (JavaMail), scheduling (CommonJ, Quartz) and template engines (FreeMarker, JasperReports, Velocity).</div>
+        </div>
+        <div class="bottom" style="padding: 8px;">
+            <div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div>
+            <div class="started-activity-container">
+                <hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;">
+                <div class="activity-root"></div>
+            </div>
+        </div>
+        <div class="status-message" style="display: none; opacity: 0;"></div>
+    </div>
+    <div class="navfooter">
+        <hr>
+        <table width="100%" summary="Navigation footer">
+            <tbody>
+                <tr>
+                    <td width="40%" align="left">
+                        <a accesskey="p" href="overview-getting-started-with-spring.html">
+                            <font>
+                                <font>上一页</font>
+                            </font>
+                        </a>&nbsp;</td>
+                    <td width="20%" align="center">
+                        <a accesskey="u" href="spring-introduction.html">
+                            <font>
+                                <font>向上</font>
+                            </font>
+                        </a>
+                    </td>
+                    <td width="40%" align="right">&nbsp;
+                        <a accesskey="n" href="spring-whats-new.html">
+                            <font>
+                                <font>下一个</font>
+                            </font>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="40%" align="left" valign="top">
+                        <font>
+                            <font>1.入门春天&nbsp;</font>
+                        </font>
+                    </td>
+                    <td width="20%" align="center">
+                        <a accesskey="h" href="index.html">
+                            <font>
+                                <font>家</font>
+                            </font>
+                        </a>
+                    </td>
+                    <td width="40%" align="right" valign="top">
+                        <font>
+                            <font>&nbsp;第二部分。</font>
+                            <font>在Spring框架4.x版的新增功能</font>
+                        </font>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <iframe frameborder="0" class="goog-te-menu-frame skiptranslate" style="visibility: visible; box-sizing: content-box; width: 910px; height: 263px; display: none;"></iframe>
+    <iframe frameborder="0" class="goog-te-menu-frame skiptranslate" style="visibility: visible; box-sizing: content-box; width: 138px; height: 69px; left: 1410px; top: 31px; display: none;"></iframe>
+</body>
 
-<p>If you prefer to use <a class="ulink" href="http://ant.apache.org/ivy" target="_top">Ivy</a> to manage dependencies then there
-are similar configuration options.</p>
-<p>To configure Ivy to point to the Spring repository add the following resolver to your
-<code class="literal">ivysettings.xml</code>:</p>
-<pre class="programlisting"><span class="hl-tag">&lt;resolvers&gt;</span>
-    <span class="hl-tag">&lt;ibiblio</span> <span class="hl-attribute">name</span>=<span class="hl-value">"io.spring.repo.maven.release"</span>
-            <span class="hl-attribute">m2compatible</span>=<span class="hl-value">"true"</span>
-            <span class="hl-attribute">root</span>=<span class="hl-value">"http://repo.spring.io/release/"</span><span class="hl-tag">/&gt;</span>
-<span class="hl-tag">&lt;/resolvers&gt;</span></pre>
-<p>You can change the <code class="literal">root</code> URL from <code class="literal">/release/</code> to <code class="literal">/milestone/</code> or <code class="literal">/snapshot/</code> as
-appropriate.</p>
-<p>Once configured, you can add dependencies in the usual way. For example (in <code class="literal">ivy.xml</code>):</p>
-<pre class="programlisting"><span class="hl-tag">&lt;dependency</span> <span class="hl-attribute">org</span>=<span class="hl-value">"org.springframework"</span>
-    <span class="hl-attribute">name</span>=<span class="hl-value">"spring-core"</span> <span class="hl-attribute">rev</span>=<span class="hl-value">"4.3.1.RELEASE"</span> <span class="hl-attribute">conf</span>=<span class="hl-value">"compile-&gt;runtime"</span><span class="hl-tag">/&gt;</span></pre>
-</div>
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-distribution-zip" href="#overview-distribution-zip"></a>Distribution Zip Files</h4></div></div></div>
-
-<p>Although using a build system that supports dependency management is the recommended
-way to obtain the Spring Framework, it is still possible to download a distribution
-zip file.</p>
-<p>Distribution zips are published to the Spring Maven Repository (this is just for our
-convenience, you don&#8217;t need Maven or any other build system in order to download them).</p>
-<p>To download a distribution zip open a web browser to
-<a class="ulink" href="http://repo.spring.io/release/org/springframework/spring" target="_top">http://repo.spring.io/release/org/springframework/spring</a> and select the appropriate
-subfolder for the version that you want. Distribution files end <code class="literal">-dist.zip</code>, for example
-spring-framework-{spring-version}-RELEASE-dist.zip. Distributions are also published
-for <a class="ulink" href="http://repo.spring.io/milestone/org/springframework/spring" target="_top">milestones</a> and
-<a class="ulink" href="http://repo.spring.io/snapshot/org/springframework/spring" target="_top">snapshots</a>.</p>
-</div>
-</div>
-<div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="overview-logging" href="#overview-logging"></a>2.3.2&nbsp;Logging</h3></div></div></div>
-
-<p>Logging is a very important dependency for Spring because <span class="emphasis"><em>a)</em></span> it is the only mandatory
-external dependency, <span class="emphasis"><em>b)</em></span> everyone likes to see some output from the tools they are
-using, and <span class="emphasis"><em>c)</em></span> Spring integrates with lots of other tools all of which have also made
-a choice of logging dependency. One of the goals of an application developer is often to
-have unified logging configured in a central place for the whole application, including
-all external components. This is more difficult than it might have been since there are so
-many choices of logging framework.</p>
-<p>The mandatory logging dependency in Spring is the Jakarta Commons Logging API (JCL). We
-compile against JCL and we also make JCL <code class="literal">Log</code> objects visible for classes that extend
-the Spring Framework. It&#8217;s important to users that all versions of Spring use the same
-logging library: migration is easy because backwards compatibility is preserved even
-with applications that extend Spring. The way we do this is to make one of the modules
-in Spring depend explicitly on <code class="literal">commons-logging</code> (the canonical implementation of JCL),
-and then make all the other modules depend on that at compile time. If you are using
-Maven for example, and wondering where you picked up the dependency on
-<code class="literal">commons-logging</code>, then it is from Spring and specifically from the central module
-called <code class="literal">spring-core</code>.</p>
-<p>The nice thing about <code class="literal">commons-logging</code> is that you don&#8217;t need anything else to make your
-application work. It has a runtime discovery algorithm that looks for other logging
-frameworks in well known places on the classpath and uses one that it thinks is
-appropriate (or you can tell it which one if you need to). If nothing else is available
-you get pretty nice looking logs just from the JDK (java.util.logging or JUL for short).
-You should find that your Spring application works and logs happily to the console out
-of the box in most situations, and that&#8217;s important.</p>
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-not-using-commons-logging" href="#overview-not-using-commons-logging"></a>Not Using Commons Logging</h4></div></div></div>
-
-<p>Unfortunately, the runtime discovery algorithm in <code class="literal">commons-logging</code>, while convenient
-for the end-user, is problematic. If we could turn back the clock and start Spring now
-as a new project it would use a different logging dependency. The first choice would
-probably be the Simple Logging Facade for Java ( <a class="ulink" href="http://www.slf4j.org" target="_top">SLF4J</a>), which is
-also used by a lot of other tools that people use with Spring inside their applications.</p>
-<p>There are basically two ways to switch off <code class="literal">commons-logging</code>:</p>
-<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
-Exclude the dependency from the <code class="literal">spring-core</code> module (as it is the only module that
-explicitly depends on <code class="literal">commons-logging</code>)
-</li><li class="listitem">
-Depend on a special <code class="literal">commons-logging</code> dependency that replaces the library with
-an empty jar (more details can be found in the
-<a class="ulink" href="http://slf4j.org/faq.html#excludingJCL" target="_top">SLF4J FAQ</a>)
-</li></ol></div>
-<p>To exclude commons-logging, add the following to your <code class="literal">dependencyManagement</code> section:</p>
-<pre class="programlisting"><span class="hl-tag">&lt;dependencies&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.springframework<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>spring-core<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>4.3.1.RELEASE<span class="hl-tag">&lt;/version&gt;</span>
-        <span class="hl-tag">&lt;exclusions&gt;</span>
-            <span class="hl-tag">&lt;exclusion&gt;</span>
-                <span class="hl-tag">&lt;groupId&gt;</span>commons-logging<span class="hl-tag">&lt;/groupId&gt;</span>
-                <span class="hl-tag">&lt;artifactId&gt;</span>commons-logging<span class="hl-tag">&lt;/artifactId&gt;</span>
-            <span class="hl-tag">&lt;/exclusion&gt;</span>
-        <span class="hl-tag">&lt;/exclusions&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-<span class="hl-tag">&lt;/dependencies&gt;</span></pre>
-<p>Now this application is probably broken because there is no implementation of the JCL
-API on the classpath, so to fix it a new one has to be provided. In the next section we
-show you how to provide an alternative implementation of JCL using SLF4J as an example.</p>
-</div>
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-logging-slf4j" href="#overview-logging-slf4j"></a>Using SLF4J</h4></div></div></div>
-
-<p>SLF4J is a cleaner dependency and more efficient at runtime than <code class="literal">commons-logging</code>
-because it uses compile-time bindings instead of runtime discovery of the other logging
-frameworks it integrates. This also means that you have to be more explicit about what
-you want to happen at runtime, and declare it or configure it accordingly. SLF4J
-provides bindings to many common logging frameworks, so you can usually choose one that
-you already use, and bind to that for configuration and management.</p>
-<p>SLF4J provides bindings to many common logging frameworks, including JCL, and it also
-does the reverse: bridges between other logging frameworks and itself. So to use SLF4J
-with Spring you need to replace the <code class="literal">commons-logging</code> dependency with the SLF4J-JCL
-bridge. Once you have done that then logging calls from within Spring will be translated
-into logging calls to the SLF4J API, so if other libraries in your application use that
-API, then you have a single place to configure and manage logging.</p>
-<p>A common choice might be to bridge Spring to SLF4J, and then provide explicit binding
-from SLF4J to Log4J. You need to supply 4 dependencies (and exclude the existing
-<code class="literal">commons-logging</code>): the bridge, the SLF4J API, the binding to Log4J, and the Log4J
-implementation itself. In Maven you would do that like this</p>
-<pre class="programlisting"><span class="hl-tag">&lt;dependencies&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.springframework<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>spring-core<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>4.3.1.RELEASE<span class="hl-tag">&lt;/version&gt;</span>
-        <span class="hl-tag">&lt;exclusions&gt;</span>
-            <span class="hl-tag">&lt;exclusion&gt;</span>
-                <span class="hl-tag">&lt;groupId&gt;</span>commons-logging<span class="hl-tag">&lt;/groupId&gt;</span>
-                <span class="hl-tag">&lt;artifactId&gt;</span>commons-logging<span class="hl-tag">&lt;/artifactId&gt;</span>
-            <span class="hl-tag">&lt;/exclusion&gt;</span>
-        <span class="hl-tag">&lt;/exclusions&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.slf4j<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>jcl-over-slf4j<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>1.5.8<span class="hl-tag">&lt;/version&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.slf4j<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>slf4j-api<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>1.5.8<span class="hl-tag">&lt;/version&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.slf4j<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>slf4j-log4j12<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>1.5.8<span class="hl-tag">&lt;/version&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>log4j<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>log4j<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>1.2.14<span class="hl-tag">&lt;/version&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-<span class="hl-tag">&lt;/dependencies&gt;</span></pre>
-<p>That might seem like a lot of dependencies just to get some logging. Well it is, but it
-<span class="emphasis"><em>is</em></span> optional, and it should behave better than the vanilla <code class="literal">commons-logging</code> with
-respect to classloader issues, notably if you are in a strict container like an OSGi
-platform. Allegedly there is also a performance benefit because the bindings are at
-compile-time not runtime.</p>
-<p>A more common choice amongst SLF4J users, which uses fewer steps and generates fewer
-dependencies, is to bind directly to <a class="ulink" href="http://logback.qos.ch" target="_top">Logback</a>. This removes the
-extra binding step because Logback implements SLF4J directly, so you only need to depend
-on two libraries not four ( <code class="literal">jcl-over-slf4j</code> and <code class="literal">logback</code>). If you do that you might
-also need to exclude the slf4j-api dependency from other external dependencies (not
-Spring), because you only want one version of that API on the classpath.</p>
-</div>
-<div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="overview-logging-log4j" href="#overview-logging-log4j"></a>Using Log4J</h4></div></div></div>
-
-<p>Many people use <a class="ulink" href="http://logging.apache.org/log4j" target="_top">Log4j</a> as a logging framework for
-configuration and management purposes. It&#8217;s efficient and well-established, and in fact
-it&#8217;s what we use at runtime when we build and test Spring. Spring also provides some
-utilities for configuring and initializing Log4j, so it has an optional compile-time
-dependency on Log4j in some modules.</p>
-<p>To make Log4j work with the default JCL dependency ( <code class="literal">commons-logging</code>) all you need to
-do is put Log4j on the classpath, and provide it with a configuration file (
-<code class="literal">log4j.properties</code> or <code class="literal">log4j.xml</code> in the root of the classpath). So for Maven users this
-is your dependency declaration:</p>
-<pre class="programlisting"><span class="hl-tag">&lt;dependencies&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>org.springframework<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>spring-core<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>4.3.1.RELEASE<span class="hl-tag">&lt;/version&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-    <span class="hl-tag">&lt;dependency&gt;</span>
-        <span class="hl-tag">&lt;groupId&gt;</span>log4j<span class="hl-tag">&lt;/groupId&gt;</span>
-        <span class="hl-tag">&lt;artifactId&gt;</span>log4j<span class="hl-tag">&lt;/artifactId&gt;</span>
-        <span class="hl-tag">&lt;version&gt;</span>1.2.14<span class="hl-tag">&lt;/version&gt;</span>
-    <span class="hl-tag">&lt;/dependency&gt;</span>
-<span class="hl-tag">&lt;/dependencies&gt;</span></pre>
-<p>And here&#8217;s a sample log4j.properties for logging to the console:</p>
-<pre class="literallayout">log4j.rootCategory=INFO, stdout
-
-log4j.appender.stdout=org.apache.log4j.ConsoleAppender
-log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
-log4j.appender.stdout.layout.ConversionPattern=%d{ABSOLUTE} %5p %t %c{2}:%L - %m%n
-
-log4j.category.org.springframework.beans.factory=DEBUG</pre>
-<div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="overview-native-jcl" href="#overview-native-jcl"></a>Runtime Containers with Native JCL</h5></div></div></div>
-
-<p>Many people run their Spring applications in a container that itself provides an
-implementation of JCL. IBM Websphere Application Server (WAS) is the archetype. This
-often causes problems, and unfortunately there is no silver bullet solution; simply
-excluding <code class="literal">commons-logging</code> from your application is not enough in most situations.</p>
-<p>To be clear about this: the problems reported are usually not with JCL per se, or even
-with <code class="literal">commons-logging</code>: rather they are to do with binding <code class="literal">commons-logging</code> to another
-framework (often Log4J). This can fail because <code class="literal">commons-logging</code> changed the way they do
-the runtime discovery in between the older versions (1.0) found in some containers and
-the modern versions that most people use now (1.1). Spring does not use any unusual
-parts of the JCL API, so nothing breaks there, but as soon as Spring or your application
-tries to do any logging you can find that the bindings to Log4J are not working.</p>
-<p>In such cases with WAS the easiest thing to do is to invert the class loader hierarchy
-(IBM calls it "parent last") so that the application controls the JCL dependency, not
-the container. That option isn&#8217;t always open, but there are plenty of other suggestions
-in the public domain for alternative approaches, and your mileage may vary depending on
-the exact version and feature set of the container.</p>
-</div>
-</div>
-</div>
-</div>
-</div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="overview-getting-started-with-spring.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="spring-introduction.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="spring-whats-new.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Getting Started with Spring&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Part&nbsp;II.&nbsp;What&#8217;s New in Spring Framework 4.x</td></tr></table></div></body></html>
+</html>
