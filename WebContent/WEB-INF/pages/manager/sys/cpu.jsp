@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>CPU使用情况</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <jsp:include page="../include.jsp"></jsp:include>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
@@ -36,7 +37,6 @@
 											y: 0
 										});
 									}
-									//console.log(data);
 									return data;
 								})()
 							};
@@ -47,7 +47,7 @@
 						console.log(data);
 					}
 				});
-				console.log(series);
+				
 		        var chart = $('#container').highcharts({                                                
 		            chart: {                                                                
 		                type: 'spline',                                                     
@@ -133,7 +133,9 @@
 </script>
 </head>
 <body class="container">
+	<%-- CPU信息展示区域 --%>
 	<div id="infoarea">${information}</div>
-	<div id="container" style="height: 400px"></div>
+	<%-- CPU信息动态折线图 --%>
+	<div id="container" style="height: 300px"></div>
 </body>
 </html>

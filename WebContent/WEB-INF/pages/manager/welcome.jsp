@@ -24,13 +24,9 @@ function sysinfofunc() {
 			type: 'GET',
 			dataType: 'html',
 			success: function(data) {
-				console.log(data);
-				console.log('成功');
 				$('#infoarea').html(data);
 			},
 			error: function(data) {
-				console.log('失敗');
-				console.log(data);
 				$('#infoarea').html(data);
 			}});
 }
