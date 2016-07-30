@@ -4,6 +4,10 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pom.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kk/spirit/controller/manager/SystemController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kk/spirit/controller/manager/UploadDemo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kk/spirit/utils/UploadFile.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/com/kk/test/RuntimeTest.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

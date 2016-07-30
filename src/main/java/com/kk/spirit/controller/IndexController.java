@@ -38,7 +38,7 @@ public class IndexController {
 			}
 		}
 		mv.addObject("list", list);
-		System.err.println("webapp.root:" + System.getProperty("webapp.root"));
+		System.err.println("项目的webapp.root:" + System.getProperty("webapp.root"));
 		return mv;
 	}
 

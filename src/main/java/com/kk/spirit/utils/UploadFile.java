@@ -10,9 +10,9 @@ import com.qiniu.http.Response;
 import com.qiniu.storage.UploadManager;
 
 /**
- * 
+ *
  * 文件上传类
- * 
+ *
  * @author huangteng
  * @date 2016年6月21日
  */
@@ -36,7 +36,7 @@ public class UploadFile {
 	}
 
 	/**
-	 * 
+	 *
 	 * 上传文件到七牛云，并返回对应的链接地址
 	 */
 	public static void upload(String file, String key) throws IOException {
@@ -64,4 +64,7 @@ public class UploadFile {
 		}
 	}
 
+	public static void main(String[] args) {
+		System.out.println("KK");
+	}
 }
